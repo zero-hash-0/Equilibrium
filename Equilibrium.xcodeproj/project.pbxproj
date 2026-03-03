@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA000001000000000000000A /* EquilibriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000001A /* EquilibriumApp.swift */; };
+		AA000002000000000000000A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000002000000000000001A /* RootView.swift */; };
+		AA000003000000000000000A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000003000000000000001A /* UserProfile.swift */; };
+		AA000004000000000000000A /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000004000000000000001A /* CheckIn.swift */; };
+		AA000005000000000000000A /* AIInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000005000000000000001A /* AIInsight.swift */; };
+		AA000006000000000000000A /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000006000000000000001A /* AIService.swift */; };
+		AA000007000000000000000A /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000007000000000000001A /* OnboardingViewModel.swift */; };
+		AA000008000000000000000A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000008000000000000001A /* HomeViewModel.swift */; };
+		AA000009000000000000000A /* CheckInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000009000000000000001A /* CheckInViewModel.swift */; };
+		AA00000A000000000000000A /* CoachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000A000000000000001A /* CoachViewModel.swift */; };
+		AA00000B000000000000000A /* TrendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000B000000000000001A /* TrendsViewModel.swift */; };
+		AA00000C000000000000000A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000C000000000000001A /* SettingsViewModel.swift */; };
+		AA00000D000000000000000A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000D000000000000001A /* MainTabView.swift */; };
+		AA00000E000000000000000A /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000E000000000000001A /* OnboardingFlowView.swift */; };
+		AA00000F000000000000000A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000F000000000000001A /* WelcomeView.swift */; };
+		AA000010000000000000000A /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000010000000000000001A /* PermissionsView.swift */; };
+		AA000011000000000000000A /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000011000000000000001A /* CreateProfileView.swift */; };
+		AA000012000000000000000A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000012000000000000001A /* HomeView.swift */; };
+		AA000013000000000000000A /* CheckInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000013000000000000001A /* CheckInFlowView.swift */; };
+		AA000014000000000000000A /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000014000000000000001A /* AICoachView.swift */; };
+		AA000015000000000000000A /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000015000000000000001A /* TrendsView.swift */; };
+		AA000016000000000000000A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000016000000000000001A /* SettingsView.swift */; };
+		AA000017000000000000000A /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000017000000000000001A /* GlassCard.swift */; };
+		AA000018000000000000000A /* WellnessScoreCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000018000000000000001A /* WellnessScoreCalculator.swift */; };
+		AA000019000000000000000A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000019000000000000001A /* Extensions.swift */; };
+		AA00001B000000000000000A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00001B000000000000001A /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA000001000000000000001A /* EquilibriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquilibriumApp.swift; sourceTree = "<group>"; };
+		AA000002000000000000001A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		AA000003000000000000001A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		AA000004000000000000001A /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
+		AA000005000000000000001A /* AIInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIInsight.swift; sourceTree = "<group>"; };
+		AA000006000000000000001A /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		AA000007000000000000001A /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		AA000008000000000000001A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		AA000009000000000000001A /* CheckInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewModel.swift; sourceTree = "<group>"; };
+		AA00000A000000000000001A /* CoachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachViewModel.swift; sourceTree = "<group>"; };
+		AA00000B000000000000001A /* TrendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsViewModel.swift; sourceTree = "<group>"; };
+		AA00000C000000000000001A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		AA00000D000000000000001A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		AA00000E000000000000001A /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
+		AA00000F000000000000001A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		AA000010000000000000001A /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
+		AA000011000000000000001A /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+		AA000012000000000000001A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AA000013000000000000001A /* CheckInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInFlowView.swift; sourceTree = "<group>"; };
+		AA000014000000000000001A /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachView.swift; sourceTree = "<group>"; };
+		AA000015000000000000001A /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
+		AA000016000000000000001A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AA000017000000000000001A /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		AA000018000000000000001A /* WellnessScoreCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessScoreCalculator.swift; sourceTree = "<group>"; };
+		AA000019000000000000001A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AA00001B000000000000001A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA00001C000000000000001A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA00001D000000000000001A /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		AA00002000000000000000FF /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA000030000000000000000A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA000040000000000000000A /* Equilibrium */ = {
+			isa = PBXGroup;
+			children = (
+				AA000041000000000000000A /* App */,
+				AA000042000000000000000A /* Models */,
+				AA000043000000000000000A /* Services */,
+				AA000044000000000000000A /* ViewModels */,
+				AA000045000000000000000A /* Views */,
+				AA000046000000000000000A /* Utils */,
+				AA000047000000000000000A /* Resources */,
+			);
+			path = Equilibrium;
+			sourceTree = "<group>";
+		};
+		AA000041000000000000000A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AA000001000000000000001A /* EquilibriumApp.swift */,
+				AA000002000000000000001A /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AA000042000000000000000A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA000003000000000000001A /* UserProfile.swift */,
+				AA000004000000000000001A /* CheckIn.swift */,
+				AA000005000000000000001A /* AIInsight.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA000043000000000000000A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AA000006000000000000001A /* AIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AA000044000000000000000A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AA000007000000000000001A /* OnboardingViewModel.swift */,
+				AA000008000000000000001A /* HomeViewModel.swift */,
+				AA000009000000000000001A /* CheckInViewModel.swift */,
+				AA00000A000000000000001A /* CoachViewModel.swift */,
+				AA00000B000000000000001A /* TrendsViewModel.swift */,
+				AA00000C000000000000001A /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AA000045000000000000000A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA00004A000000000000000A /* Onboarding */,
+				AA00004B000000000000000A /* Home */,
+				AA00004C000000000000000A /* CheckIn */,
+				AA00004D000000000000000A /* Coach */,
+				AA00004E000000000000000A /* Trends */,
+				AA00004F000000000000000A /* Settings */,
+				AA000050000000000000000A /* Components */,
+				AA00000D000000000000001A /* MainTabView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA00004A000000000000000A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				AA00000E000000000000001A /* OnboardingFlowView.swift */,
+				AA00000F000000000000001A /* WelcomeView.swift */,
+				AA000010000000000000001A /* PermissionsView.swift */,
+				AA000011000000000000001A /* CreateProfileView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		AA00004B000000000000000A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AA000012000000000000001A /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AA00004C000000000000000A /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+				AA000013000000000000001A /* CheckInFlowView.swift */,
+			);
+			path = CheckIn;
+			sourceTree = "<group>";
+		};
+		AA00004D000000000000000A /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				AA000014000000000000001A /* AICoachView.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		AA00004E000000000000000A /* Trends */ = {
+			isa = PBXGroup;
+			children = (
+				AA000015000000000000001A /* TrendsView.swift */,
+			);
+			path = Trends;
+			sourceTree = "<group>";
+		};
+		AA00004F000000000000000A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AA000016000000000000001A /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		AA000050000000000000000A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AA000017000000000000001A /* GlassCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AA000046000000000000000A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AA000018000000000000001A /* WellnessScoreCalculator.swift */,
+				AA000019000000000000001A /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AA000047000000000000000A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA00001B000000000000001A /* Assets.xcassets */,
+				AA00001C000000000000001A /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AA000048000000000000000A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				AA00001D000000000000001A /* Development.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		AA000049000000000000000A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA00002000000000000000FF /* Equilibrium.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA000060000000000000000A = {
+			isa = PBXGroup;
+			children = (
+				AA000040000000000000000A /* Equilibrium */,
+				AA000048000000000000000A /* Config */,
+				AA000049000000000000000A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA000070000000000000000A /* Equilibrium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA000080000000000000000A /* Build configuration list for PBXNativeTarget "Equilibrium" */;
+			buildPhases = (
+				AA000031000000000000000A /* Sources */,
+				AA000030000000000000000A /* Frameworks */,
+				AA000032000000000000000A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Equilibrium;
+			productName = Equilibrium;
+			productReference = AA00002000000000000000FF /* Equilibrium.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA000090000000000000000A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AA000070000000000000000A = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = AA000085000000000000000A /* Build configuration list for PBXProject "Equilibrium" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA000060000000000000000A;
+			productRefGroup = AA000049000000000000000A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA000070000000000000000A /* Equilibrium */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AA000032000000000000000A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA00001B000000000000000A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA000031000000000000000A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001000000000000000A /* EquilibriumApp.swift in Sources */,
+				AA000002000000000000000A /* RootView.swift in Sources */,
+				AA000003000000000000000A /* UserProfile.swift in Sources */,
+				AA000004000000000000000A /* CheckIn.swift in Sources */,
+				AA000005000000000000000A /* AIInsight.swift in Sources */,
+				AA000006000000000000000A /* AIService.swift in Sources */,
+				AA000007000000000000000A /* OnboardingViewModel.swift in Sources */,
+				AA000008000000000000000A /* HomeViewModel.swift in Sources */,
+				AA000009000000000000000A /* CheckInViewModel.swift in Sources */,
+				AA00000A000000000000000A /* CoachViewModel.swift in Sources */,
+				AA00000B000000000000000A /* TrendsViewModel.swift in Sources */,
+				AA00000C000000000000000A /* SettingsViewModel.swift in Sources */,
+				AA00000D000000000000000A /* MainTabView.swift in Sources */,
+				AA00000E000000000000000A /* OnboardingFlowView.swift in Sources */,
+				AA00000F000000000000000A /* WelcomeView.swift in Sources */,
+				AA000010000000000000000A /* PermissionsView.swift in Sources */,
+				AA000011000000000000000A /* CreateProfileView.swift in Sources */,
+				AA000012000000000000000A /* HomeView.swift in Sources */,
+				AA000013000000000000000A /* CheckInFlowView.swift in Sources */,
+				AA000014000000000000000A /* AICoachView.swift in Sources */,
+				AA000015000000000000000A /* TrendsView.swift in Sources */,
+				AA000016000000000000000A /* SettingsView.swift in Sources */,
+				AA000017000000000000000A /* GlassCard.swift in Sources */,
+				AA000018000000000000000A /* WellnessScoreCalculator.swift in Sources */,
+				AA000019000000000000000A /* Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA0000A0000000000000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_CYCLE = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_EXCEPTION = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA0000A1000000000000000A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_CYCLE = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_EXCEPTION = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AA0000B0000000000000000A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Equilibrium/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.equilibrium.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA0000B1000000000000000A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Equilibrium/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.equilibrium.app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA000085000000000000000A /* Build configuration list for PBXProject "Equilibrium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000A0000000000000000A /* Debug */,
+				AA0000A1000000000000000A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA000080000000000000000A /* Build configuration list for PBXNativeTarget "Equilibrium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000B0000000000000000A /* Debug */,
+				AA0000B1000000000000000A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = AA000090000000000000000A /* Project object */;
+}

@@ -1,0 +1,16 @@
+// Equilibrium — Development Configuration
+// ─────────────────────────────────────────────────────────────
+// 1. Copy this file and rename it (e.g. Development.local.xcconfig)
+// 2. Fill in your real API key below
+// 3. Never commit the file containing your real key to git
+//    (it is already in .gitignore)
+// ─────────────────────────────────────────────────────────────
+
+// OpenAI-compatible API key
+AI_API_KEY = sk-YOUR_KEY_HERE
+
+// Base URL — change to point at a proxy, local server, etc.
+AI_BASE_URL = https://api.openai.com/v1
+
+// Model name — swap freely without code changes
+AI_MODEL = gpt-4o-mini
