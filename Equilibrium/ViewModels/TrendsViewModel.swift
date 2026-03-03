@@ -1,46 +1,45 @@
 import SwiftUI
 
-enum TrendRange: String, CaseIterable {
-    case sevenDays  = "7 Days"
-    case thirtyDays = "30 Days"
-
-    var days: Int { self == .sevenDays ? 7 : 30 }
-}
-
-struct TrendPoint: Identifiable {
-    let id = UUID()
-    let date: Date
-    let value: Double
-}
-
+@MainActor
 @Observable
 final class TrendsViewModel {
-    var selectedRange: TrendRange = .sevenDays
+    var rangeDays: Int = 7
 
-    func stressTrend(from checkIns: [CheckIn]) -> [TrendPoint] {
-        filtered(checkIns).map { TrendPoint(date: $0.date, value: Double($0.stressLevel)) }
+    struct TrendPoint: Identifiable {
+        let id = UUID()
+        let date: Date
+        let value: Double
+        let label: String
     }
 
-    func wellnessTrend(from checkIns: [CheckIn]) -> [TrendPoint] {
-        filtered(checkIns).map { TrendPoint(date: $0.date, value: Double($0.wellnessScore)) }
+    func filtered(_ checkIns: [CheckIn]) -> [CheckIn] {
+        let cutoff = DateHelpers.startOfDay(daysAgo: rangeDays)
+        return checkIns
+            .filter { $0.date >= cutoff }
+            .sorted { $0.date < $1.date }
     }
 
-    func urgeFrequency(from checkIns: [CheckIn]) -> [TrendPoint] {
-        filtered(checkIns).map { ci -> TrendPoint in
+    func stressSeries(from checkIns: [CheckIn]) -> [TrendPoint] {
+        filtered(checkIns).map {
+            TrendPoint(date: $0.date, value: Double($0.stressLevel), label: $0.dayKey)
+        }
+    }
+
+    func wellnessSeries(from checkIns: [CheckIn]) -> [TrendPoint] {
+        filtered(checkIns).map {
+            TrendPoint(date: $0.date, value: Double($0.wellnessScore), label: $0.dayKey)
+        }
+    }
+
+    func urgeSeries(from checkIns: [CheckIn]) -> [TrendPoint] {
+        filtered(checkIns).map { ci in
             let val: Double
-            switch ci.spendingUrgeEnum {
+            switch ci.spendingUrge {
             case .none:   val = 0
             case .mild:   val = 1
             case .strong: val = 2
             }
-            return TrendPoint(date: ci.date, value: val)
+            return TrendPoint(date: ci.date, value: val, label: ci.dayKey)
         }
-    }
-
-    private func filtered(_ checkIns: [CheckIn]) -> [CheckIn] {
-        let cutoff = Calendar.current.date(byAdding: .day, value: -selectedRange.days, to: Date())!
-        return checkIns
-            .filter { $0.date >= cutoff }
-            .sorted { $0.date < $1.date }
     }
 }

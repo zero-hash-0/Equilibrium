@@ -1,72 +1,65 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    let onNext: () -> Void
+    let onContinue: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
-
-            // Icon
-            ZStack {
-                Circle()
-                    .fill(Color.eqMint.opacity(0.15))
-                    .frame(width: 120, height: 120)
-                Image(systemName: "brain.head.profile")
-                    .font(.system(size: 52))
-                    .foregroundStyle(Color.eqMint)
-            }
-            .padding(.bottom, 36)
-
-            Text("Equilibrium")
-                .font(.system(size: 38, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
-
-            Text("AI Financial Wellness Coach")
-                .font(.system(size: 17, weight: .medium))
-                .foregroundStyle(Color.eqMint)
-                .padding(.top, 6)
-
-            Spacer().frame(height: 48)
-
-            VStack(spacing: 20) {
-                FeatureRow(icon: "calendar.badge.checkmark", title: "Daily Check-Ins",
-                           subtitle: "Track stress, sleep, and spending urges")
-                FeatureRow(icon: "sparkles", title: "AI Insights",
-                           subtitle: "Personalized coaching after every check-in")
-                FeatureRow(icon: "chart.xyaxis.line", title: "Wellness Trends",
-                           subtitle: "See your financial health improve over time")
-            }
-            .padding(.horizontal, 32)
-
+            iconSection
+            Spacer().frame(height: Theme.xxl)
+            textSection
             Spacer()
+            bottomSection
+        }
+        .padding(.horizontal, Theme.xl)
+    }
 
-            PrimaryButton(title: "Get Started") { onNext() }
-                .padding(.horizontal, 28)
-                .padding(.bottom, 48)
+    private var iconSection: some View {
+        ZStack {
+            Circle()
+                .fill(Theme.accentMint.opacity(0.12))
+                .frame(width: 130, height: 130)
+            Image(systemName: "brain.head.profile")
+                .font(.system(size: 56))
+                .foregroundStyle(Theme.accentMint)
         }
     }
-}
 
-private struct FeatureRow: View {
-    let icon: String
-    let title: String
-    let subtitle: String
-
-    var body: some View {
-        HStack(spacing: 16) {
-            Image(systemName: icon)
-                .font(.system(size: 22))
-                .foregroundStyle(Color.eqMint)
-                .frame(width: 36)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(.system(size: 15, weight: .semibold)).foregroundStyle(.white)
-                Text(subtitle).font(.caption).foregroundStyle(.secondary)
+    private var textSection: some View {
+        VStack(spacing: Theme.sm) {
+            Text("Equilibrium")
+                .font(.system(size: 40, weight: .bold, design: .rounded))
+                .foregroundStyle(Theme.textPrimary)
+            Text("Daily check-ins + AI insights")
+                .font(.system(size: 17, weight: .medium))
+                .foregroundStyle(Theme.accentMint)
+            Spacer().frame(height: Theme.lg)
+            VStack(spacing: Theme.sm) {
+                featureRow(icon: "calendar.badge.checkmark", text: "Track stress, sleep & spending urges")
+                featureRow(icon: "sparkles", text: "Personalized AI coaching after each check-in")
+                featureRow(icon: "chart.line.uptrend.xyaxis", text: "Visualize your wellness trends over time")
             }
+        }
+    }
+
+    private func featureRow(icon: String, text: String) -> some View {
+        HStack(spacing: Theme.sm) {
+            Image(systemName: icon)
+                .font(.system(size: 16))
+                .foregroundStyle(Theme.accentMint)
+                .frame(width: 28)
+            Text(text)
+                .font(.subheadline)
+                .foregroundStyle(Theme.textSecondary)
             Spacer()
         }
-        .padding(16)
-        .background(.ultraThinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private var bottomSection: some View {
+        VStack(spacing: Theme.sm) {
+            PrimaryButton(title: "Get Started", action: onContinue)
+        }
+        .padding(.bottom, Theme.xxl)
     }
 }

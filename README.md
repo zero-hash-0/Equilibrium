@@ -1,6 +1,6 @@
 # Equilibrium — AI Financial Wellness Coach
 
-A premium SwiftUI iOS app that combines daily financial check-ins with AI-powered coaching insights.
+Premium SwiftUI iOS app combining daily financial check-ins with AI-powered coaching.
 
 ---
 
@@ -19,75 +19,90 @@ A premium SwiftUI iOS app that combines daily financial check-ins with AI-powere
 
 ## Setup
 
-### 1. Add your API key via `.xcconfig`
+### 1. Add your API key
 
-The project reads AI credentials from `Info.plist`, which pulls them from the active `.xcconfig`.
+Open `Config/Debug.xcconfig` and replace `your_key_here`:
 
-**Steps:**
-1. Open `Config/Development.xcconfig`
-2. Replace `sk-YOUR_KEY_HERE` with your actual OpenAI API key
-3. Optionally change `AI_MODEL` (default: `gpt-4o-mini`) or `AI_BASE_URL`
-
-> **Never commit your real key.** The `.gitignore` already excludes `*.xcconfig.local`. You can make a private copy:
-> ```bash
-> cp Config/Development.xcconfig Config/Development.local.xcconfig
-> # Edit the .local copy — it will never be committed
-> ```
-
-### 2. Open in Xcode
-
-```bash
-open Equilibrium.xcodeproj
+```
+OPENAI_API_KEY = sk-proj-...yourkey...
+OPENAI_MODEL   = gpt-4.1-mini
+OPENAI_BASE_URL = https://api.openai.com/v1
 ```
 
-Select an iPhone 15 simulator, then **Run (⌘R)**.
+> **Never commit your real key.** The `.gitignore` excludes `*.local.xcconfig`. Make a private copy:
+> ```bash
+> cp Config/Debug.xcconfig Config/Debug.local.xcconfig
+> # Edit .local copy — never committed
+> ```
 
-### 3. Test the AI call
+### 2. Set Base Configuration in Xcode
+
+1. Open `Equilibrium.xcodeproj`
+2. Click the project → select target → **Build Settings**
+3. Under **Configuration** → **Debug** → set Base Configuration to `Debug.xcconfig`
+4. **Release** → set to `Release.xcconfig`
+
+### 3. Run
+
+Select an iPhone 15+ simulator → **⌘R**
+
+The app compiles and runs with no API key (AI features show a friendly error; all other screens work fully).
+
+### 4. Test the AI call
 
 1. Complete onboarding (name, goal, baseline stress)
-2. Tap **Start Check-In** on the home screen
-3. Fill in all 4 steps and tap **Submit & Get Insights**
-4. The AI Coach screen will call the API and display your personalized insight
+2. **Start Check-In** on Home
+3. Fill all 4 steps → **Submit & Get Insights**
+4. AI Coach screen calls the API and displays Insight / Action / If-Then
 
 ---
 
-## Project Structure
+## File Structure
 
 ```
 Equilibrium/
 ├── App/
-│   ├── EquilibriumApp.swift       # @main, ModelContainer setup
-│   └── RootView.swift             # Onboarding vs. MainTabView router
+│   ├── EquilibriumApp.swift       # @main, ModelContainer
+│   ├── OnboardingGateView.swift   # Routes: onboarding or tabs
+│   ├── MainTabView.swift          # Home | Trends | Settings tabs
+│   └── Theme.swift                # Colors, spacing, corner radius
 ├── Models/
+│   ├── Enums.swift                # PrimaryGoal, SpendingUrge, GoalToday
 │   ├── UserProfile.swift          # @Model — name, goal, baseline stress
-│   ├── CheckIn.swift              # @Model — daily check-in data
+│   ├── CheckIn.swift              # @Model — daily check-in + wellness score
 │   └── AIInsight.swift            # @Model — AI response + DTO
 ├── Services/
-│   └── AIService.swift            # URLSession AI call, rate limiting
-├── ViewModels/
+│   ├── AIService.swift            # Actor — URLSession OpenAI call
+│   ├── Secrets.swift              # Bundle key reader (xcconfig → Info.plist)
+│   └── ExportService.swift        # JSON export builder
+├── Utils/
+│   ├── DateHelpers.swift          # dayKey formatter, startOfDay
+│   ├── WellnessScore.swift        # Score algorithm + explanation
+│   ├── RateLimiter.swift          # UserDefaults-based daily rate limiter
+│   └── ShareSheet.swift           # UIActivityViewController wrapper
+├── ViewModels/                    # @MainActor @Observable classes
 │   ├── OnboardingViewModel.swift
 │   ├── HomeViewModel.swift
 │   ├── CheckInViewModel.swift
-│   ├── CoachViewModel.swift       # Manages AI fetch + regenerate
+│   ├── AICoachViewModel.swift     # Manages AI fetch + 3/day regen limit
 │   ├── TrendsViewModel.swift
 │   └── SettingsViewModel.swift
 ├── Views/
-│   ├── MainTabView.swift          # TabView: Home | Trends | Settings
-│   ├── Onboarding/                # Welcome → Permissions → Create Profile
-│   ├── Home/                      # Dashboard with score, CTA, latest insight
-│   ├── CheckIn/                   # 4-step flow (stress, urge, sleep, goal)
-│   ├── Coach/                     # AI insight display + regenerate
-│   ├── Trends/                    # 7/30-day Swift Charts
-│   ├── Settings/                  # Edit profile, export JSON, delete data
-│   └── Components/                # GlassCard, WellnessRing, PrimaryButton
-├── Utils/
-│   ├── WellnessScoreCalculator.swift
-│   └── Extensions.swift           # Color palette, Date helpers, ViewModifiers
+│   ├── Components/                # LiquidGlassCard, PrimaryButton, SecondaryButton,
+│   │                              #   EmptyStateView, SegmentedToggle
+│   ├── Onboarding/                # Welcome → Permissions → CreateProfile
+│   ├── Home/HomeView.swift        # Dashboard: score, status, latest insight
+│   ├── CheckIn/                   # 4-step flow (Step1–4 as separate files)
+│   ├── Coach/AICoachView.swift    # Insight / Action / If-Then + regenerate
+│   ├── Trends/TrendsView.swift    # 7/30-day Swift Charts
+│   └── Settings/                  # SettingsView + EditProfileView
 └── Resources/
     ├── Assets.xcassets
-    └── Info.plist                  # Reads AI_API_KEY etc. from xcconfig
+    └── Info.plist                  # Reads OPENAI_* from xcconfig
+
 Config/
-└── Development.xcconfig           # API key, base URL, model name
+├── Debug.xcconfig                  # API key + model (set Base Configuration here)
+└── Release.xcconfig
 ```
 
 ---
@@ -96,31 +111,33 @@ Config/
 
 ```
 score = 50
-score += lerp(stress, 1..10, +20..-20)   // lower stress = higher score
-score += urge: None=+15, Mild=0, Strong=-15
-score += lerp(sleep, 1..5, -10..+10)     // optional
+score += (6 - stressLevel) × 4      // stress 1→+20, stress 10→-16
+score += urge: None=+12, Mild=+4, Strong=-10
+score += (sleepQuality - 3) × 5     // optional; sleep 5→+10, sleep 1→-10
 score = clamp(0, 100)
 ```
 
 ---
 
-## MVP Implemented ✅
+## MVP Checklist ✅
 
-- [x] Onboarding (Welcome → Notifications → Create Profile)
-- [x] Home Dashboard (Wellness Score ring, check-in status, latest insight)
-- [x] Daily Check-In 4-step flow
-- [x] AI Coach screen (fetch, display, regenerate with 3/day rate limit)
-- [x] Trends (7/30-day toggle, Stress / Wellness / Urge charts)
-- [x] Settings (edit profile, export JSON, delete all data)
-- [x] SwiftData persistence (UserProfile, CheckIn, AIInsight)
-- [x] API key via `.xcconfig` (never hardcoded)
-- [x] Premium Apple-tier UI (frosted glass, mint/slate palette, SF Symbols)
+- [x] Onboarding — Welcome, Notifications, Create Profile
+- [x] Home Dashboard — Wellness score ring, check-in status, latest insight card
+- [x] Daily Check-In — 4-step animated flow, one per day enforcement
+- [x] AI Coach — OpenAI call, Insight / Action / If-Then, retry on error
+- [x] Regenerate — max 3/day rate limit via RateLimiter (UserDefaults)
+- [x] Trends — 7/30-day toggle, 3 Swift Charts (stress, wellness, urge)
+- [x] Settings — Edit profile, export JSON (share sheet), delete all data
+- [x] SwiftData persistence — UserProfile, CheckIn, AIInsight with relationships
+- [x] Secrets via xcconfig — never hardcoded
+- [x] Runs with no API key — graceful error, all non-AI screens functional
+- [x] Premium UI — frosted glass cards, mint/graphite palette, safe area aware
 
-## Coming Next 🔜
+## Roadmap 🔜
 
-- [ ] Plaid integration — auto-pull real spending data
-- [ ] Notification scheduling — daily check-in reminders
-- [ ] Widget — Today's wellness score on Home Screen
-- [ ] iCloud sync — SwiftData CloudKit backend
-- [ ] Advanced AI prompt — include spending history context
-- [ ] Streak tracking — consecutive check-in days
+- [ ] Plaid integration — pull real transaction data into check-ins
+- [ ] Local notifications — daily check-in reminders
+- [ ] Home Screen widget — today's wellness score
+- [ ] iCloud sync — SwiftData + CloudKit
+- [ ] Streak tracking — consecutive check-in days badge
+- [ ] Advanced AI context — include recent spending patterns in prompt

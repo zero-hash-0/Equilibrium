@@ -7,68 +7,97 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA000001000000000000000A /* EquilibriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000000000000001A /* EquilibriumApp.swift */; };
-		AA000002000000000000000A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000002000000000000001A /* RootView.swift */; };
-		AA000003000000000000000A /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000003000000000000001A /* UserProfile.swift */; };
-		AA000004000000000000000A /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000004000000000000001A /* CheckIn.swift */; };
-		AA000005000000000000000A /* AIInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000005000000000000001A /* AIInsight.swift */; };
-		AA000006000000000000000A /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000006000000000000001A /* AIService.swift */; };
-		AA000007000000000000000A /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000007000000000000001A /* OnboardingViewModel.swift */; };
-		AA000008000000000000000A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000008000000000000001A /* HomeViewModel.swift */; };
-		AA000009000000000000000A /* CheckInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000009000000000000001A /* CheckInViewModel.swift */; };
-		AA00000A000000000000000A /* CoachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000A000000000000001A /* CoachViewModel.swift */; };
-		AA00000B000000000000000A /* TrendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000B000000000000001A /* TrendsViewModel.swift */; };
-		AA00000C000000000000000A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000C000000000000001A /* SettingsViewModel.swift */; };
-		AA00000D000000000000000A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000D000000000000001A /* MainTabView.swift */; };
-		AA00000E000000000000000A /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000E000000000000001A /* OnboardingFlowView.swift */; };
-		AA00000F000000000000000A /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000F000000000000001A /* WelcomeView.swift */; };
-		AA000010000000000000000A /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000010000000000000001A /* PermissionsView.swift */; };
-		AA000011000000000000000A /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000011000000000000001A /* CreateProfileView.swift */; };
-		AA000012000000000000000A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000012000000000000001A /* HomeView.swift */; };
-		AA000013000000000000000A /* CheckInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000013000000000000001A /* CheckInFlowView.swift */; };
-		AA000014000000000000000A /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000014000000000000001A /* AICoachView.swift */; };
-		AA000015000000000000000A /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000015000000000000001A /* TrendsView.swift */; };
-		AA000016000000000000000A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000016000000000000001A /* SettingsView.swift */; };
-		AA000017000000000000000A /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000017000000000000001A /* GlassCard.swift */; };
-		AA000018000000000000000A /* WellnessScoreCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000018000000000000001A /* WellnessScoreCalculator.swift */; };
-		AA000019000000000000000A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000019000000000000001A /* Extensions.swift */; };
-		AA00001B000000000000000A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00001B000000000000001A /* Assets.xcassets */; };
+		AA0000000000000000000001 /* EquilibriumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000001 /* EquilibriumApp.swift */; };
+		AA0000000000000000000002 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000002 /* MainTabView.swift */; };
+		AA0000000000000000000003 /* OnboardingGateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000003 /* OnboardingGateView.swift */; };
+		AA0000000000000000000004 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000004 /* Theme.swift */; };
+		AA0000000000000000000005 /* AIInsight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000005 /* AIInsight.swift */; };
+		AA0000000000000000000006 /* CheckIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000006 /* CheckIn.swift */; };
+		AA0000000000000000000007 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000007 /* Enums.swift */; };
+		AA0000000000000000000008 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000008 /* UserProfile.swift */; };
+		AA0000000000000000000009 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000009 /* AIService.swift */; };
+		AA000000000000000000000A /* ExportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000000A /* ExportService.swift */; };
+		AA000000000000000000000B /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000000B /* Secrets.swift */; };
+		AA000000000000000000000C /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000000C /* DateHelpers.swift */; };
+		AA000000000000000000000D /* RateLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000000D /* RateLimiter.swift */; };
+		AA000000000000000000000E /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000000E /* ShareSheet.swift */; };
+		AA000000000000000000000F /* WellnessScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000000F /* WellnessScore.swift */; };
+		AA0000000000000000000010 /* AICoachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000010 /* AICoachViewModel.swift */; };
+		AA0000000000000000000011 /* CheckInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000011 /* CheckInViewModel.swift */; };
+		AA0000000000000000000012 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000012 /* HomeViewModel.swift */; };
+		AA0000000000000000000013 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000013 /* OnboardingViewModel.swift */; };
+		AA0000000000000000000014 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000014 /* SettingsViewModel.swift */; };
+		AA0000000000000000000015 /* TrendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000015 /* TrendsViewModel.swift */; };
+		AA0000000000000000000016 /* CheckInFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000016 /* CheckInFlowView.swift */; };
+		AA0000000000000000000017 /* Step1StressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000017 /* Step1StressView.swift */; };
+		AA0000000000000000000018 /* Step2UrgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000018 /* Step2UrgeView.swift */; };
+		AA0000000000000000000019 /* Step3SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000019 /* Step3SleepView.swift */; };
+		AA000000000000000000001A /* Step4GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000001A /* Step4GoalView.swift */; };
+		AA000000000000000000001B /* AICoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000001B /* AICoachView.swift */; };
+		AA000000000000000000001C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000001C /* EmptyStateView.swift */; };
+		AA000000000000000000001D /* LiquidGlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000001D /* LiquidGlassCard.swift */; };
+		AA000000000000000000001E /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000001E /* PrimaryButton.swift */; };
+		AA000000000000000000001F /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000001F /* SecondaryButton.swift */; };
+		AA0000000000000000000020 /* SegmentedToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000020 /* SegmentedToggle.swift */; };
+		AA0000000000000000000021 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000021 /* HomeView.swift */; };
+		AA0000000000000000000022 /* CreateProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000022 /* CreateProfileView.swift */; };
+		AA0000000000000000000023 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000023 /* PermissionsView.swift */; };
+		AA0000000000000000000024 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000024 /* WelcomeView.swift */; };
+		AA0000000000000000000025 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000025 /* EditProfileView.swift */; };
+		AA0000000000000000000026 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000026 /* SettingsView.swift */; };
+		AA0000000000000000000027 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000027 /* TrendsView.swift */; };
+		AA0000000000000000000028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000028 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA000001000000000000001A /* EquilibriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquilibriumApp.swift; sourceTree = "<group>"; };
-		AA000002000000000000001A /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		AA000003000000000000001A /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		AA000004000000000000001A /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
-		AA000005000000000000001A /* AIInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIInsight.swift; sourceTree = "<group>"; };
-		AA000006000000000000001A /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
-		AA000007000000000000001A /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
-		AA000008000000000000001A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		AA000009000000000000001A /* CheckInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewModel.swift; sourceTree = "<group>"; };
-		AA00000A000000000000001A /* CoachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachViewModel.swift; sourceTree = "<group>"; };
-		AA00000B000000000000001A /* TrendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsViewModel.swift; sourceTree = "<group>"; };
-		AA00000C000000000000001A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		AA00000D000000000000001A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		AA00000E000000000000001A /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
-		AA00000F000000000000001A /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		AA000010000000000000001A /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
-		AA000011000000000000001A /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
-		AA000012000000000000001A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AA000013000000000000001A /* CheckInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInFlowView.swift; sourceTree = "<group>"; };
-		AA000014000000000000001A /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachView.swift; sourceTree = "<group>"; };
-		AA000015000000000000001A /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
-		AA000016000000000000001A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		AA000017000000000000001A /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
-		AA000018000000000000001A /* WellnessScoreCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessScoreCalculator.swift; sourceTree = "<group>"; };
-		AA000019000000000000001A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		AA00001B000000000000001A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AA00001C000000000000001A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA00001D000000000000001A /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
-		AA00002000000000000000FF /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0000000000000000000001 /* EquilibriumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquilibriumApp.swift; sourceTree = "<group>"; };
+		BB0000000000000000000002 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000003 /* OnboardingGateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGateView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000004 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BB0000000000000000000005 /* AIInsight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIInsight.swift; sourceTree = "<group>"; };
+		BB0000000000000000000006 /* CheckIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckIn.swift; sourceTree = "<group>"; };
+		BB0000000000000000000007 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		BB0000000000000000000008 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		BB0000000000000000000009 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		BB000000000000000000000A /* ExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportService.swift; sourceTree = "<group>"; };
+		BB000000000000000000000B /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		BB000000000000000000000C /* DateHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
+		BB000000000000000000000D /* RateLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateLimiter.swift; sourceTree = "<group>"; };
+		BB000000000000000000000E /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		BB000000000000000000000F /* WellnessScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessScore.swift; sourceTree = "<group>"; };
+		BB0000000000000000000010 /* AICoachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachViewModel.swift; sourceTree = "<group>"; };
+		BB0000000000000000000011 /* CheckInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewModel.swift; sourceTree = "<group>"; };
+		BB0000000000000000000012 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BB0000000000000000000013 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		BB0000000000000000000014 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		BB0000000000000000000015 /* TrendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsViewModel.swift; sourceTree = "<group>"; };
+		BB0000000000000000000016 /* CheckInFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInFlowView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000017 /* Step1StressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1StressView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000018 /* Step2UrgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step2UrgeView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000019 /* Step3SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step3SleepView.swift; sourceTree = "<group>"; };
+		BB000000000000000000001A /* Step4GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step4GoalView.swift; sourceTree = "<group>"; };
+		BB000000000000000000001B /* AICoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoachView.swift; sourceTree = "<group>"; };
+		BB000000000000000000001C /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		BB000000000000000000001D /* LiquidGlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassCard.swift; sourceTree = "<group>"; };
+		BB000000000000000000001E /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		BB000000000000000000001F /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		BB0000000000000000000020 /* SegmentedToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedToggle.swift; sourceTree = "<group>"; };
+		BB0000000000000000000021 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000022 /* CreateProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000023 /* PermissionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000024 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000025 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000026 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000027 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
+		BB0000000000000000000028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BB0000000000000000000029 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB000000000000000000002A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = ../Config/Debug.xcconfig; sourceTree = "<group>"; };
+		BB000000000000000000002B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = ../Config/Release.xcconfig; sourceTree = "<group>"; };
+		BB000000000000000000002C /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AA000030000000000000000A /* Frameworks */ = {
+		CC0000000000000000000001 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,187 +107,203 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA000040000000000000000A /* Equilibrium */ = {
+		DD0000000000000000000001 /* Equilibrium */ = {
 			isa = PBXGroup;
 			children = (
-				AA000041000000000000000A /* App */,
-				AA000042000000000000000A /* Models */,
-				AA000043000000000000000A /* Services */,
-				AA000044000000000000000A /* ViewModels */,
-				AA000045000000000000000A /* Views */,
-				AA000046000000000000000A /* Utils */,
-				AA000047000000000000000A /* Resources */,
+				DD0000000000000000000002 /* Equilibrium */,
+				DD000000000000000000000F /* Config */,
+				DD0000000000000000000010 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		DD0000000000000000000002 /* Equilibrium */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000000000000000000003 /* App */,
+				DD0000000000000000000004 /* Models */,
+				DD0000000000000000000005 /* Services */,
+				DD0000000000000000000006 /* Utils */,
+				DD0000000000000000000007 /* ViewModels */,
+				DD0000000000000000000008 /* Views */,
+				DD000000000000000000000E /* Resources */,
+			);
+			name = Equilibrium;
 			path = Equilibrium;
 			sourceTree = "<group>";
 		};
-		AA000041000000000000000A /* App */ = {
+		DD0000000000000000000003 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				AA000001000000000000001A /* EquilibriumApp.swift */,
-				AA000002000000000000001A /* RootView.swift */,
+				BB0000000000000000000001 /* EquilibriumApp.swift */,
+				BB0000000000000000000002 /* MainTabView.swift */,
+				BB0000000000000000000003 /* OnboardingGateView.swift */,
+				BB0000000000000000000004 /* Theme.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
 		};
-		AA000042000000000000000A /* Models */ = {
+		DD0000000000000000000004 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AA000003000000000000001A /* UserProfile.swift */,
-				AA000004000000000000001A /* CheckIn.swift */,
-				AA000005000000000000001A /* AIInsight.swift */,
+				BB0000000000000000000005 /* AIInsight.swift */,
+				BB0000000000000000000006 /* CheckIn.swift */,
+				BB0000000000000000000007 /* Enums.swift */,
+				BB0000000000000000000008 /* UserProfile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		AA000043000000000000000A /* Services */ = {
+		DD0000000000000000000005 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AA000006000000000000001A /* AIService.swift */,
+				BB0000000000000000000009 /* AIService.swift */,
+				BB000000000000000000000A /* ExportService.swift */,
+				BB000000000000000000000B /* Secrets.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		AA000044000000000000000A /* ViewModels */ = {
+		DD0000000000000000000006 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AA000007000000000000001A /* OnboardingViewModel.swift */,
-				AA000008000000000000001A /* HomeViewModel.swift */,
-				AA000009000000000000001A /* CheckInViewModel.swift */,
-				AA00000A000000000000001A /* CoachViewModel.swift */,
-				AA00000B000000000000001A /* TrendsViewModel.swift */,
-				AA00000C000000000000001A /* SettingsViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		AA000045000000000000000A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				AA00004A000000000000000A /* Onboarding */,
-				AA00004B000000000000000A /* Home */,
-				AA00004C000000000000000A /* CheckIn */,
-				AA00004D000000000000000A /* Coach */,
-				AA00004E000000000000000A /* Trends */,
-				AA00004F000000000000000A /* Settings */,
-				AA000050000000000000000A /* Components */,
-				AA00000D000000000000001A /* MainTabView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		AA00004A000000000000000A /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				AA00000E000000000000001A /* OnboardingFlowView.swift */,
-				AA00000F000000000000001A /* WelcomeView.swift */,
-				AA000010000000000000001A /* PermissionsView.swift */,
-				AA000011000000000000001A /* CreateProfileView.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		AA00004B000000000000000A /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				AA000012000000000000001A /* HomeView.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		AA00004C000000000000000A /* CheckIn */ = {
-			isa = PBXGroup;
-			children = (
-				AA000013000000000000001A /* CheckInFlowView.swift */,
-			);
-			path = CheckIn;
-			sourceTree = "<group>";
-		};
-		AA00004D000000000000000A /* Coach */ = {
-			isa = PBXGroup;
-			children = (
-				AA000014000000000000001A /* AICoachView.swift */,
-			);
-			path = Coach;
-			sourceTree = "<group>";
-		};
-		AA00004E000000000000000A /* Trends */ = {
-			isa = PBXGroup;
-			children = (
-				AA000015000000000000001A /* TrendsView.swift */,
-			);
-			path = Trends;
-			sourceTree = "<group>";
-		};
-		AA00004F000000000000000A /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				AA000016000000000000001A /* SettingsView.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		AA000050000000000000000A /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				AA000017000000000000001A /* GlassCard.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		AA000046000000000000000A /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				AA000018000000000000001A /* WellnessScoreCalculator.swift */,
-				AA000019000000000000001A /* Extensions.swift */,
+				BB000000000000000000000C /* DateHelpers.swift */,
+				BB000000000000000000000D /* RateLimiter.swift */,
+				BB000000000000000000000E /* ShareSheet.swift */,
+				BB000000000000000000000F /* WellnessScore.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		AA000047000000000000000A /* Resources */ = {
+		DD0000000000000000000007 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				AA00001B000000000000001A /* Assets.xcassets */,
-				AA00001C000000000000001A /* Info.plist */,
+				BB0000000000000000000010 /* AICoachViewModel.swift */,
+				BB0000000000000000000011 /* CheckInViewModel.swift */,
+				BB0000000000000000000012 /* HomeViewModel.swift */,
+				BB0000000000000000000013 /* OnboardingViewModel.swift */,
+				BB0000000000000000000014 /* SettingsViewModel.swift */,
+				BB0000000000000000000015 /* TrendsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DD0000000000000000000008 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD0000000000000000000009 /* CheckIn */,
+				DD000000000000000000000A /* Coach */,
+				DD000000000000000000000B /* Components */,
+				DD000000000000000000000C /* Home */,
+				DD000000000000000000000D /* Onboarding */,
+				DD0000000000000000000011 /* Settings */,
+				DD0000000000000000000012 /* Trends */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD0000000000000000000009 /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000016 /* CheckInFlowView.swift */,
+				BB0000000000000000000017 /* Step1StressView.swift */,
+				BB0000000000000000000018 /* Step2UrgeView.swift */,
+				BB0000000000000000000019 /* Step3SleepView.swift */,
+				BB000000000000000000001A /* Step4GoalView.swift */,
+			);
+			path = CheckIn;
+			sourceTree = "<group>";
+		};
+		DD000000000000000000000A /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				BB000000000000000000001B /* AICoachView.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		DD000000000000000000000B /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BB000000000000000000001C /* EmptyStateView.swift */,
+				BB000000000000000000001D /* LiquidGlassCard.swift */,
+				BB000000000000000000001E /* PrimaryButton.swift */,
+				BB000000000000000000001F /* SecondaryButton.swift */,
+				BB0000000000000000000020 /* SegmentedToggle.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		DD000000000000000000000C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000021 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DD000000000000000000000D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000022 /* CreateProfileView.swift */,
+				BB0000000000000000000023 /* PermissionsView.swift */,
+				BB0000000000000000000024 /* WelcomeView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DD000000000000000000000E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000028 /* Assets.xcassets */,
+				BB0000000000000000000029 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		AA000048000000000000000A /* Config */ = {
+		DD000000000000000000000F /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				AA00001D000000000000001A /* Development.xcconfig */,
+				BB000000000000000000002A /* Debug.xcconfig */,
+				BB000000000000000000002B /* Release.xcconfig */,
 			);
-			path = Config;
+			name = Config;
 			sourceTree = "<group>";
 		};
-		AA000049000000000000000A /* Products */ = {
+		DD0000000000000000000010 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA00002000000000000000FF /* Equilibrium.app */,
+				BB000000000000000000002C /* Equilibrium.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AA000060000000000000000A = {
+		DD0000000000000000000011 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				AA000040000000000000000A /* Equilibrium */,
-				AA000048000000000000000A /* Config */,
-				AA000049000000000000000A /* Products */,
+				BB0000000000000000000025 /* EditProfileView.swift */,
+				BB0000000000000000000026 /* SettingsView.swift */,
 			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DD0000000000000000000012 /* Trends */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000027 /* TrendsView.swift */,
+			);
+			path = Trends;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AA000070000000000000000A /* Equilibrium */ = {
+		EE0000000000000000000001 /* Equilibrium */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AA000080000000000000000A /* Build configuration list for PBXNativeTarget "Equilibrium" */;
+			buildConfigurationList = FF0000000000000000000002 /* Build configuration list for PBXNativeTarget "Equilibrium" */;
 			buildPhases = (
-				AA000031000000000000000A /* Sources */,
-				AA000030000000000000000A /* Frameworks */,
-				AA000032000000000000000A /* Resources */,
+				CC0000000000000000000002 /* Sources */,
+				CC0000000000000000000001 /* Frameworks */,
+				CC0000000000000000000003 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -266,25 +311,24 @@
 			);
 			name = Equilibrium;
 			productName = Equilibrium;
-			productReference = AA00002000000000000000FF /* Equilibrium.app */;
+			productReference = BB000000000000000000002C /* Equilibrium.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AA000090000000000000000A /* Project object */ = {
+		EE0000000000000000000002 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					AA000070000000000000000A = {
+					EE0000000000000000000001 = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = AA000085000000000000000A /* Build configuration list for PBXProject "Equilibrium" */;
+			buildConfigurationList = FF0000000000000000000001 /* Build configuration list for PBXProject "Equilibrium" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -292,70 +336,83 @@
 				en,
 				Base,
 			);
-			mainGroup = AA000060000000000000000A;
-			productRefGroup = AA000049000000000000000A /* Products */;
+			mainGroup = DD0000000000000000000001 /* Equilibrium */;
+			productRefGroup = DD0000000000000000000010 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AA000070000000000000000A /* Equilibrium */,
+				EE0000000000000000000001 /* Equilibrium */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AA000032000000000000000A /* Resources */ = {
+		CC0000000000000000000003 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA00001B000000000000000A /* Assets.xcassets in Resources */,
+				AA0000000000000000000028 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AA000031000000000000000A /* Sources */ = {
+		CC0000000000000000000002 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA000001000000000000000A /* EquilibriumApp.swift in Sources */,
-				AA000002000000000000000A /* RootView.swift in Sources */,
-				AA000003000000000000000A /* UserProfile.swift in Sources */,
-				AA000004000000000000000A /* CheckIn.swift in Sources */,
-				AA000005000000000000000A /* AIInsight.swift in Sources */,
-				AA000006000000000000000A /* AIService.swift in Sources */,
-				AA000007000000000000000A /* OnboardingViewModel.swift in Sources */,
-				AA000008000000000000000A /* HomeViewModel.swift in Sources */,
-				AA000009000000000000000A /* CheckInViewModel.swift in Sources */,
-				AA00000A000000000000000A /* CoachViewModel.swift in Sources */,
-				AA00000B000000000000000A /* TrendsViewModel.swift in Sources */,
-				AA00000C000000000000000A /* SettingsViewModel.swift in Sources */,
-				AA00000D000000000000000A /* MainTabView.swift in Sources */,
-				AA00000E000000000000000A /* OnboardingFlowView.swift in Sources */,
-				AA00000F000000000000000A /* WelcomeView.swift in Sources */,
-				AA000010000000000000000A /* PermissionsView.swift in Sources */,
-				AA000011000000000000000A /* CreateProfileView.swift in Sources */,
-				AA000012000000000000000A /* HomeView.swift in Sources */,
-				AA000013000000000000000A /* CheckInFlowView.swift in Sources */,
-				AA000014000000000000000A /* AICoachView.swift in Sources */,
-				AA000015000000000000000A /* TrendsView.swift in Sources */,
-				AA000016000000000000000A /* SettingsView.swift in Sources */,
-				AA000017000000000000000A /* GlassCard.swift in Sources */,
-				AA000018000000000000000A /* WellnessScoreCalculator.swift in Sources */,
-				AA000019000000000000000A /* Extensions.swift in Sources */,
+				AA0000000000000000000001 /* EquilibriumApp.swift in Sources */,
+				AA0000000000000000000002 /* MainTabView.swift in Sources */,
+				AA0000000000000000000003 /* OnboardingGateView.swift in Sources */,
+				AA0000000000000000000004 /* Theme.swift in Sources */,
+				AA0000000000000000000005 /* AIInsight.swift in Sources */,
+				AA0000000000000000000006 /* CheckIn.swift in Sources */,
+				AA0000000000000000000007 /* Enums.swift in Sources */,
+				AA0000000000000000000008 /* UserProfile.swift in Sources */,
+				AA0000000000000000000009 /* AIService.swift in Sources */,
+				AA000000000000000000000A /* ExportService.swift in Sources */,
+				AA000000000000000000000B /* Secrets.swift in Sources */,
+				AA000000000000000000000C /* DateHelpers.swift in Sources */,
+				AA000000000000000000000D /* RateLimiter.swift in Sources */,
+				AA000000000000000000000E /* ShareSheet.swift in Sources */,
+				AA000000000000000000000F /* WellnessScore.swift in Sources */,
+				AA0000000000000000000010 /* AICoachViewModel.swift in Sources */,
+				AA0000000000000000000011 /* CheckInViewModel.swift in Sources */,
+				AA0000000000000000000012 /* HomeViewModel.swift in Sources */,
+				AA0000000000000000000013 /* OnboardingViewModel.swift in Sources */,
+				AA0000000000000000000014 /* SettingsViewModel.swift in Sources */,
+				AA0000000000000000000015 /* TrendsViewModel.swift in Sources */,
+				AA0000000000000000000016 /* CheckInFlowView.swift in Sources */,
+				AA0000000000000000000017 /* Step1StressView.swift in Sources */,
+				AA0000000000000000000018 /* Step2UrgeView.swift in Sources */,
+				AA0000000000000000000019 /* Step3SleepView.swift in Sources */,
+				AA000000000000000000001A /* Step4GoalView.swift in Sources */,
+				AA000000000000000000001B /* AICoachView.swift in Sources */,
+				AA000000000000000000001C /* EmptyStateView.swift in Sources */,
+				AA000000000000000000001D /* LiquidGlassCard.swift in Sources */,
+				AA000000000000000000001E /* PrimaryButton.swift in Sources */,
+				AA000000000000000000001F /* SecondaryButton.swift in Sources */,
+				AA0000000000000000000020 /* SegmentedToggle.swift in Sources */,
+				AA0000000000000000000021 /* HomeView.swift in Sources */,
+				AA0000000000000000000022 /* CreateProfileView.swift in Sources */,
+				AA0000000000000000000023 /* PermissionsView.swift in Sources */,
+				AA0000000000000000000024 /* WelcomeView.swift in Sources */,
+				AA0000000000000000000025 /* EditProfileView.swift in Sources */,
+				AA0000000000000000000026 /* SettingsView.swift in Sources */,
+				AA0000000000000000000027 /* TrendsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		AA0000A0000000000000000A /* Debug */ = {
+		FF0000000000000000000003 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
+			baseConfigurationReference = BB000000000000000000002A /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -383,7 +440,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_EXCEPTION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -413,13 +470,12 @@
 			};
 			name = Debug;
 		};
-		AA0000A1000000000000000A /* Release */ = {
+		FF0000000000000000000004 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
+			baseConfigurationReference = BB000000000000000000002B /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -447,7 +503,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_EXCEPTION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -470,75 +526,71 @@
 			};
 			name = Release;
 		};
-		AA0000B0000000000000000A /* Debug */ = {
+		FF0000000000000000000005 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Equilibrium/Resources/Info.plist";
+				INFOPLIST_FILE = Equilibrium/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.equilibrium.app";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.equilibrium.app;
+				PRODUCT_NAME = Equilibrium;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		AA0000B1000000000000000A /* Release */ = {
+		FF0000000000000000000006 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA00001D000000000000001A /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "Equilibrium/Resources/Info.plist";
+				INFOPLIST_FILE = Equilibrium/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.equilibrium.app";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.equilibrium.app;
+				PRODUCT_NAME = Equilibrium;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AA000085000000000000000A /* Build configuration list for PBXProject "Equilibrium" */ = {
+		FF0000000000000000000001 /* Build configuration list for PBXProject "Equilibrium" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA0000A0000000000000000A /* Debug */,
-				AA0000A1000000000000000A /* Release */,
+				FF0000000000000000000003 /* Debug */,
+				FF0000000000000000000004 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AA000080000000000000000A /* Build configuration list for PBXNativeTarget "Equilibrium" */ = {
+		FF0000000000000000000002 /* Build configuration list for PBXNativeTarget "Equilibrium" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA0000B0000000000000000A /* Debug */,
-				AA0000B1000000000000000A /* Release */,
+				FF0000000000000000000005 /* Debug */,
+				FF0000000000000000000006 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -546,5 +598,5 @@
 /* End XCConfigurationList section */
 
 	};
-	rootObject = AA000090000000000000000A /* Project object */;
+	rootObject = EE0000000000000000000002 /* Project object */;
 }

@@ -1,31 +1,27 @@
 import SwiftUI
 import SwiftData
 
+@MainActor
 @Observable
 final class OnboardingViewModel {
     var name: String = ""
-    var selectedGoal: PrimaryGoal = .buildSavings
+    var primaryGoal: PrimaryGoal = .buildSavings
     var baselineStress: Double = 5
     var nameError: String? = nil
 
-    func validate() -> Bool {
+    func createProfile(modelContext: ModelContext) {
         let trimmed = name.trimmingCharacters(in: .whitespaces)
-        if trimmed.isEmpty {
+        guard !trimmed.isEmpty else {
             nameError = "Please enter your name."
-            return false
+            return
         }
         nameError = nil
-        return true
-    }
-
-    func saveProfile(context: ModelContext) {
-        guard validate() else { return }
         let profile = UserProfile(
-            name: name.trimmingCharacters(in: .whitespaces),
-            primaryGoal: selectedGoal,
+            name: trimmed,
+            primaryGoal: primaryGoal,
             baselineStress: Int(baselineStress)
         )
-        context.insert(profile)
-        try? context.save()
+        modelContext.insert(profile)
+        try? modelContext.save()
     }
 }

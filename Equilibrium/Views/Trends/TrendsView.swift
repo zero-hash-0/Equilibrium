@@ -7,159 +7,119 @@ struct TrendsView: View {
     @State private var vm = TrendsViewModel()
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                LinearGradient(
-                    colors: [Color.eqGraphite, Color.eqSlate],
-                    startPoint: .top, endPoint: .bottom
-                ).ignoresSafeArea()
-
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 20) {
-                        headerSection
-                        rangePicker
-                        if checkIns.isEmpty {
-                            emptyState
-                        } else {
-                            stressChart
-                            wellnessChart
-                            urgeChart
-                        }
+        ZStack {
+            Theme.background.ignoresSafeArea()
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: Theme.lg) {
+                    header
+                    rangePicker
+                    if vm.stressSeries(from: checkIns).isEmpty {
+                        EmptyStateView(
+                            icon: "chart.xyaxis.line",
+                            title: "No Data Yet",
+                            message: "Complete check-ins to see your wellness trends here."
+                        )
+                        .padding(.top, 60)
+                    } else {
+                        stressChart
+                        wellnessChart
+                        urgeChart
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 16)
-                    .padding(.bottom, 40)
                 }
+                .padding(.horizontal, Theme.lg)
+                .padding(.top, Theme.md)
+                .padding(.bottom, 40)
             }
-            .navigationBarHidden(true)
         }
+        .navigationBarHidden(true)
     }
 
-    private var headerSection: some View {
+    private var header: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Trends")
                     .font(.system(size: 30, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
-                Text("Your financial wellness over time")
-                    .font(.subheadline).foregroundStyle(.secondary)
+                    .foregroundStyle(Theme.textPrimary)
+                Text("Your wellness over time")
+                    .font(.subheadline).foregroundStyle(Theme.textSecondary)
             }
             Spacer()
         }
+        .padding(.top, Theme.md)
     }
 
     private var rangePicker: some View {
-        Picker("Range", selection: $vm.selectedRange) {
-            ForEach(TrendRange.allCases, id: \.self) { range in
-                Text(range.rawValue).tag(range)
-            }
-        }
-        .pickerStyle(.segmented)
-        .tint(Color.eqMint)
-    }
-
-    private var emptyState: some View {
-        GlassCard {
-            VStack(spacing: 12) {
-                Image(systemName: "chart.xyaxis.line")
-                    .font(.system(size: 40))
-                    .foregroundStyle(Color.eqMint.opacity(0.5))
-                Text("No data yet")
-                    .font(.headline).foregroundStyle(.white)
-                Text("Complete your first check-in to see trends.")
-                    .font(.subheadline).foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 20)
-        }
+        SegmentedToggle(
+            selection: $vm.rangeDays,
+            options: [("7 Days", 7), ("30 Days", 30)]
+        )
     }
 
     private var stressChart: some View {
-        trendCard(title: "Stress Level", icon: "waveform.path.ecg", accent: .orange) {
-            let points = vm.stressTrend(from: checkIns)
-            Chart(points) { point in
-                LineMark(
-                    x: .value("Date", point.date),
-                    y: .value("Stress", point.value)
-                )
-                .foregroundStyle(Color.orange.gradient)
-                .interpolationMethod(.catmullRom)
-                AreaMark(
-                    x: .value("Date", point.date),
-                    y: .value("Stress", point.value)
-                )
-                .foregroundStyle(Color.orange.opacity(0.1).gradient)
-                .interpolationMethod(.catmullRom)
+        chartCard(title: "Stress Level", icon: "waveform.path.ecg", accent: .orange) {
+            Chart(vm.stressSeries(from: checkIns)) { pt in
+                LineMark(x: .value("Date", pt.date), y: .value("Stress", pt.value))
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(Color.orange.gradient)
+                AreaMark(x: .value("Date", pt.date), y: .value("Stress", pt.value))
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(Color.orange.opacity(0.08).gradient)
             }
             .chartYScale(domain: 1...10)
+            .chartXAxis { AxisMarks(values: .automatic(desiredCount: 4)) {
+                AxisValueLabel(format: .dateTime.month(.abbreviated).day())
+                    .foregroundStyle(Theme.textSecondary)
+            }}
             .frame(height: 140)
         }
     }
 
     private var wellnessChart: some View {
-        trendCard(title: "Wellness Score", icon: "heart.fill", accent: Color.eqMint) {
-            let points = vm.wellnessTrend(from: checkIns)
-            Chart(points) { point in
-                LineMark(
-                    x: .value("Date", point.date),
-                    y: .value("Score", point.value)
-                )
-                .foregroundStyle(Color.eqMint.gradient)
-                .interpolationMethod(.catmullRom)
-                AreaMark(
-                    x: .value("Date", point.date),
-                    y: .value("Score", point.value)
-                )
-                .foregroundStyle(Color.eqMint.opacity(0.1).gradient)
-                .interpolationMethod(.catmullRom)
+        chartCard(title: "Wellness Score", icon: "heart.fill", accent: Theme.accentMint) {
+            Chart(vm.wellnessSeries(from: checkIns)) { pt in
+                LineMark(x: .value("Date", pt.date), y: .value("Score", pt.value))
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(Theme.accentMint.gradient)
+                AreaMark(x: .value("Date", pt.date), y: .value("Score", pt.value))
+                    .interpolationMethod(.catmullRom)
+                    .foregroundStyle(Theme.accentMint.opacity(0.08).gradient)
             }
             .chartYScale(domain: 0...100)
+            .chartXAxis { AxisMarks(values: .automatic(desiredCount: 4)) {
+                AxisValueLabel(format: .dateTime.month(.abbreviated).day())
+                    .foregroundStyle(Theme.textSecondary)
+            }}
             .frame(height: 140)
         }
     }
 
     private var urgeChart: some View {
-        trendCard(title: "Spending Urge Intensity", icon: "cart.badge.questionmark", accent: .cyan) {
-            let points = vm.urgeFrequency(from: checkIns)
-            Chart(points) { point in
-                BarMark(
-                    x: .value("Date", point.date),
-                    y: .value("Urge", point.value)
-                )
-                .foregroundStyle(Color.cyan.opacity(0.8).gradient)
+        chartCard(title: "Spending Urge Intensity", icon: "cart.badge.questionmark", accent: Theme.accentCyan) {
+            Chart(vm.urgeSeries(from: checkIns)) { pt in
+                BarMark(x: .value("Date", pt.date), y: .value("Urge", pt.value))
+                    .foregroundStyle(Theme.accentCyan.opacity(0.8).gradient)
             }
             .chartYAxis {
                 AxisMarks(values: [0, 1, 2]) { val in
                     AxisGridLine()
                     AxisValueLabel {
                         switch val.index {
-                        case 0: Text("None")
-                        case 1: Text("Mild")
-                        default: Text("Strong")
+                        case 0: Text("None").foregroundStyle(Theme.textSecondary)
+                        case 1: Text("Mild").foregroundStyle(Theme.textSecondary)
+                        default: Text("Strong").foregroundStyle(Theme.textSecondary)
                         }
                     }
                 }
             }
+            .chartXAxis { AxisMarks(values: .automatic(desiredCount: 4)) {
+                AxisValueLabel(format: .dateTime.month(.abbreviated).day())
+                    .foregroundStyle(Theme.textSecondary)
+            }}
             .frame(height: 140)
         }
     }
 
-    private func trendCard<C: View>(title: String, icon: String, accent: Color, @ViewBuilder chart: () -> C) -> some View {
-        GlassCard {
-            VStack(alignment: .leading, spacing: 14) {
-                Label(title, systemImage: icon)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(accent)
-                chart()
-                    .chartXAxis {
-                        AxisMarks(values: .automatic(desiredCount: 4)) { _ in
-                            AxisGridLine()
-                            AxisValueLabel(format: .dateTime.month(.abbreviated).day())
-                                .foregroundStyle(Color.secondary)
-                        }
-                    }
-            }
-        }
+    private func chartCard<C: View>(title: String, icon: String, accent: Color, @ViewBuilder chart: () -> C) -> some View {
+        TitledCard(title: title, icon: icon, accent: accent) { chart() }
     }
 }

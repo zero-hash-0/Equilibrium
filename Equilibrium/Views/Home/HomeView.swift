@@ -2,140 +2,178 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    @Query(sort: \CheckIn.createdAt, order: .reverse) private var checkIns: [CheckIn]
+    @Binding var selectedTab: Int
     @Query private var profiles: [UserProfile]
+    @Query(sort: \CheckIn.createdAt, order: .reverse) private var checkIns: [CheckIn]
     @State private var vm = HomeViewModel()
     @State private var showCheckIn = false
+    @State private var showAlreadyCheckedIn = false
+    @State private var existingCheckIn: CheckIn? = nil
 
     private var profile: UserProfile? { profiles.first }
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                LinearGradient(
-                    colors: [Color.eqGraphite, Color.eqSlate],
-                    startPoint: .top, endPoint: .bottom
-                ).ignoresSafeArea()
-
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 20) {
-                        headerSection
-                        wellnessScoreCard
-                        checkInStatusCard
-                        if let insight = vm.latestInsight {
-                            latestInsightCard(insight: insight)
-                        }
-                        Spacer(minLength: 20)
+        ZStack {
+            Theme.background.ignoresSafeArea()
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: Theme.lg) {
+                    headerSection
+                    wellnessCard
+                    checkInCard
+                    if let insight = vm.latestInsight(from: checkIns) {
+                        insightCard(insight)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 8)
-                    .padding(.bottom, 40)
+                    trendButton
+                }
+                .padding(.horizontal, Theme.lg)
+                .padding(.top, Theme.md)
+                .padding(.bottom, 40)
+            }
+        }
+        .navigationBarHidden(true)
+        .fullScreenCover(isPresented: $showCheckIn) {
+            CheckInFlowView()
+        }
+        .alert("Already Checked In", isPresented: $showAlreadyCheckedIn) {
+            if existingCheckIn?.insight != nil {
+                Button("View Coach") {
+                    showCheckIn = true
                 }
             }
-            .navigationBarHidden(true)
-            .onAppear { vm.refresh(checkIns: checkIns) }
-            .onChange(of: checkIns.count) { _, _ in vm.refresh(checkIns: checkIns) }
-            .fullScreenCover(isPresented: $showCheckIn) {
-                CheckInFlowView()
-            }
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("You've already completed today's check-in.")
         }
     }
 
-    // MARK: - Subviews
+    // MARK: - Sections
 
     private var headerSection: some View {
-        HStack {
+        HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("Today")
                     .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(Theme.textSecondary)
                 Text("Hello, \(profile?.name ?? "there") 👋")
                     .font(.system(size: 26, weight: .bold, design: .rounded))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Theme.textPrimary)
             }
             Spacer()
-            Image(systemName: "person.circle.fill")
-                .font(.system(size: 36))
-                .foregroundStyle(Color.eqMint)
+            ZStack {
+                Circle()
+                    .fill(Theme.accentMint.opacity(0.15))
+                    .frame(width: 44, height: 44)
+                Image(systemName: "bell.fill")
+                    .font(.system(size: 18))
+                    .foregroundStyle(Theme.accentMint)
+            }
         }
-        .padding(.top, 16)
+        .padding(.top, Theme.md)
     }
 
-    private var wellnessScoreCard: some View {
-        GlassCard {
-            HStack(spacing: 20) {
-                WellnessRing(score: vm.wellnessScore)
+    private var wellnessCard: some View {
+        TitledCard(title: "Financial Wellness Score", icon: "heart.fill") {
+            let score = vm.wellnessScore(from: checkIns)
+            HStack(spacing: Theme.lg) {
+                WellnessRing(score: score ?? 50, dimmed: score == nil)
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Wellness Score")
-                        .font(.system(size: 17, weight: .semibold))
-                        .foregroundStyle(.white)
-                    Text(scoreDescription(vm.wellnessScore))
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
+                    if let score {
+                        Text(WellnessScore.label(for: score))
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundStyle(Theme.textPrimary)
+                        Text(WellnessScore.explanation(for: score))
+                            .font(.subheadline)
+                            .foregroundStyle(Theme.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    } else {
+                        Text("No data yet")
+                            .font(.system(size: 18, weight: .bold))
+                            .foregroundStyle(Theme.textPrimary)
+                        Text("Complete your first check-in to see your score.")
+                            .font(.subheadline)
+                            .foregroundStyle(Theme.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
                 }
                 Spacer()
             }
         }
     }
 
-    private var checkInStatusCard: some View {
-        GlassCard {
-            VStack(spacing: 16) {
-                HStack {
-                    Label("Today's Check-In", systemImage: "calendar.badge.checkmark")
-                        .font(.system(size: 15, weight: .semibold))
-                        .foregroundStyle(.white)
-                    Spacer()
-                    checkInBadge
-                }
-                PrimaryButton(title: vm.todayCheckIn == nil ? "Start Check-In" : "View Check-In") {
+    private var checkInCard: some View {
+        let today = vm.todayCheckIn(from: checkIns)
+        return TitledCard(title: "Today's Check-In", icon: "calendar.badge.checkmark",
+            accessory: {
+                statusBadge(done: today != nil)
+            }) {
+            PrimaryButton(title: today == nil ? "Start Check-In" : "View Today's Check-In") {
+                let todayCI = vm.todayCheckIn(from: checkIns)
+                if todayCI != nil {
+                    existingCheckIn = todayCI
+                    showAlreadyCheckedIn = true
+                } else {
                     showCheckIn = true
                 }
             }
         }
     }
 
-    private var checkInBadge: some View {
-        Group {
-            if vm.todayCheckIn != nil {
-                Label("Done", systemImage: "checkmark.circle.fill")
-                    .font(.caption).fontWeight(.semibold)
-                    .foregroundStyle(Color.eqMint)
-                    .padding(.horizontal, 10).padding(.vertical, 4)
-                    .background(Color.eqMint.opacity(0.15))
-                    .clipShape(Capsule())
-            } else {
-                Text("Not done")
-                    .font(.caption).fontWeight(.semibold)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 10).padding(.vertical, 4)
-                    .background(Color.secondary.opacity(0.12))
-                    .clipShape(Capsule())
-            }
+    private func statusBadge(done: Bool) -> some View {
+        Text(done ? "Done" : "Not done")
+            .font(.caption).fontWeight(.semibold)
+            .foregroundStyle(done ? .black : Theme.textSecondary)
+            .padding(.horizontal, Theme.xs).padding(.vertical, 4)
+            .background(done ? Theme.accentMint : Color.white.opacity(0.08))
+            .clipShape(Capsule())
+    }
+
+    private func insightCard(_ insight: AIInsight) -> some View {
+        TitledCard(title: "Latest AI Insight", icon: "sparkles") {
+            Text(insight.insightText)
+                .font(.subheadline)
+                .foregroundStyle(Theme.textSecondary)
+                .lineLimit(3)
         }
     }
 
-    private func latestInsightCard(insight: AIInsight) -> some View {
-        GlassCard {
-            VStack(alignment: .leading, spacing: 10) {
-                Label("Latest AI Insight", systemImage: "sparkles")
-                    .font(.system(size: 13, weight: .semibold))
-                    .foregroundStyle(Color.eqMint)
-                Text(insight.insightText)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(3)
+    private var trendButton: some View {
+        HStack(spacing: Theme.sm) {
+            SecondaryButton(title: "View Trends", icon: "chart.line.uptrend.xyaxis") {
+                selectedTab = 1
+            }
+            SecondaryButton(title: "Settings", icon: "gearshape.fill") {
+                selectedTab = 2
             }
         }
     }
+}
 
-    private func scoreDescription(_ score: Int) -> String {
-        switch score {
-        case 75...: return "You're in great financial balance today."
-        case 50..<75: return "Moderate wellness — a few small wins help."
-        case 25..<50: return "Stress is elevated. One small step matters."
-        default:    return "High stress detected. Be gentle with yourself."
+// MARK: - Wellness Ring
+private struct WellnessRing: View {
+    let score: Int
+    var dimmed: Bool = false
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(Theme.accentMint.opacity(0.15), lineWidth: 10)
+            Circle()
+                .trim(from: 0, to: dimmed ? 0 : CGFloat(score) / 100)
+                .stroke(
+                    Theme.accentGradient,
+                    style: StrokeStyle(lineWidth: 10, lineCap: .round)
+                )
+                .rotationEffect(.degrees(-90))
+                .animation(.spring(response: 0.8), value: score)
+            VStack(spacing: 1) {
+                Text(dimmed ? "—" : "\(score)")
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(dimmed ? Theme.textSecondary : Theme.accentMint)
+                if !dimmed {
+                    Text("/ 100").font(.caption2).foregroundStyle(Theme.textSecondary)
+                }
+            }
         }
+        .frame(width: 100, height: 100)
     }
 }

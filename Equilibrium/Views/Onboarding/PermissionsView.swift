@@ -2,48 +2,39 @@ import SwiftUI
 import UserNotifications
 
 struct PermissionsView: View {
-    let onNext: () -> Void
-    @State private var requested = false
+    let onContinue: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
-
             Image(systemName: "bell.badge.fill")
-                .font(.system(size: 56))
-                .foregroundStyle(Color.eqMint)
-                .padding(.bottom, 28)
-
+                .font(.system(size: 64))
+                .foregroundStyle(Theme.accentMint)
+            Spacer().frame(height: Theme.xl)
             Text("Stay on Track")
-                .font(.system(size: 32, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
-
-            Text("Enable notifications for daily check-in reminders. You can change this anytime in Settings.")
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .foregroundStyle(Theme.textPrimary)
+            Spacer().frame(height: Theme.sm)
+            Text("Get a daily reminder to complete your check-in. You can change this any time in Settings.")
                 .font(.body)
+                .foregroundStyle(Theme.textSecondary)
                 .multilineTextAlignment(.center)
-                .foregroundStyle(.secondary)
-                .padding(.horizontal, 36)
-                .padding(.top, 12)
-
             Spacer()
-
-            VStack(spacing: 12) {
+            VStack(spacing: Theme.sm) {
                 PrimaryButton(title: "Enable Notifications") {
                     requestNotifications()
                 }
-
-                Button("Skip for now") { onNext() }
-                    .font(.system(size: 15, weight: .medium))
-                    .foregroundStyle(.secondary)
+                SecondaryButton(title: "Not Now", action: onContinue)
             }
-            .padding(.horizontal, 28)
-            .padding(.bottom, 48)
+            .padding(.bottom, Theme.xxl)
         }
+        .padding(.horizontal, Theme.xl)
     }
 
     private func requestNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in
-            DispatchQueue.main.async { onNext() }
-        }
+        UNUserNotificationCenter.current()
+            .requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in
+                DispatchQueue.main.async { onContinue() }
+            }
     }
 }

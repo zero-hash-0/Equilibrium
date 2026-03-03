@@ -1,124 +1,113 @@
 import SwiftUI
+import SwiftData
 
 struct CreateProfileView: View {
-    @Bindable var vm: OnboardingViewModel
-    let onFinish: () -> Void
+    @Environment(\.modelContext) private var modelContext
+    @State private var vm = OnboardingViewModel()
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 28) {
+            VStack(alignment: .leading, spacing: Theme.xl) {
                 headerSection
                 nameSection
                 goalSection
                 stressSection
-                Spacer(minLength: 24)
+                Spacer(minLength: Theme.md)
                 PrimaryButton(title: "Create Profile") {
-                    if vm.validate() { onFinish() }
+                    vm.createProfile(modelContext: modelContext)
                 }
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, Theme.xl)
             .padding(.top, 60)
-            .padding(.bottom, 48)
+            .padding(.bottom, Theme.xxl)
         }
+        .background(Theme.background.ignoresSafeArea())
     }
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text("Create Profile")
                 .font(.system(size: 30, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
-            Text("Personalizes your coaching experience")
+                .foregroundStyle(Theme.textPrimary)
+            Text("Tell us a bit about yourself")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Theme.textSecondary)
         }
     }
 
     private var nameSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Label("Your Name", systemImage: "person.fill")
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(Color.eqMint)
-
+        VStack(alignment: .leading, spacing: Theme.xs) {
+            sectionLabel("Your Name", icon: "person.fill")
             TextField("e.g. Alex", text: $vm.name)
-                .padding(14)
+                .padding(Theme.md)
                 .background(.ultraThinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
                 .autocorrectionDisabled()
-
             if let err = vm.nameError {
-                Text(err).font(.caption).foregroundStyle(.red)
+                Text(err).font(.caption).foregroundStyle(Theme.destructive)
             }
         }
     }
 
     private var goalSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Label("Primary Goal", systemImage: "flag.fill")
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(Color.eqMint)
-
-            VStack(spacing: 8) {
+        VStack(alignment: .leading, spacing: Theme.xs) {
+            sectionLabel("Primary Goal", icon: "flag.fill")
+            VStack(spacing: Theme.xs) {
                 ForEach(PrimaryGoal.allCases, id: \.self) { goal in
-                    GoalRow(goal: goal, isSelected: vm.selectedGoal == goal) {
-                        vm.selectedGoal = goal
-                    }
+                    goalRow(goal)
                 }
             }
         }
     }
 
-    private var stressSection: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Label("Baseline Stress Level", systemImage: "waveform.path.ecg")
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(Color.eqMint)
-
-            GlassCard {
-                VStack(spacing: 12) {
-                    HStack {
-                        Text("How stressed do you typically feel?")
-                            .font(.subheadline).foregroundStyle(.secondary)
-                        Spacer()
-                        Text("\(Int(vm.baselineStress))")
-                            .font(.system(size: 22, weight: .bold, design: .rounded))
-                            .foregroundStyle(Color.eqMint)
-                    }
-                    Slider(value: $vm.baselineStress, in: 1...10, step: 1)
-                        .tint(Color.eqMint)
-                    HStack {
-                        Text("Calm").font(.caption2).foregroundStyle(.secondary)
-                        Spacer()
-                        Text("Very stressed").font(.caption2).foregroundStyle(.secondary)
-                    }
-                }
-            }
-        }
-    }
-}
-
-private struct GoalRow: View {
-    let goal: PrimaryGoal
-    let isSelected: Bool
-    let onTap: () -> Void
-
-    var body: some View {
-        Button(action: onTap) {
+    private func goalRow(_ goal: PrimaryGoal) -> some View {
+        let selected = vm.primaryGoal == goal
+        return Button { vm.primaryGoal = goal } label: {
             HStack {
                 Text(goal.rawValue)
                     .font(.system(size: 15, weight: .medium))
-                    .foregroundStyle(isSelected ? .black : .white)
+                    .foregroundStyle(selected ? .black : Theme.textPrimary)
                 Spacer()
-                if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundStyle(.black)
+                if selected {
+                    Image(systemName: "checkmark.circle.fill").foregroundStyle(.black)
                 }
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, Theme.md)
             .padding(.vertical, 14)
-            .background(isSelected ? Color.eqMint : Color.white.opacity(0.06))
+            .background(selected ? Theme.accentMint : Color.white.opacity(0.06))
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
-        .animation(.easeInOut(duration: 0.2), value: isSelected)
+        .animation(.easeInOut(duration: 0.18), value: selected)
+    }
+
+    private var stressSection: some View {
+        VStack(alignment: .leading, spacing: Theme.xs) {
+            sectionLabel("Baseline Stress", icon: "waveform.path.ecg")
+            LiquidGlassCard {
+                VStack(spacing: Theme.sm) {
+                    HStack {
+                        Text("How stressed do you usually feel?")
+                            .font(.subheadline).foregroundStyle(Theme.textSecondary)
+                        Spacer()
+                        Text("\(Int(vm.baselineStress))")
+                            .font(.system(size: 24, weight: .bold, design: .rounded))
+                            .foregroundStyle(Theme.accentMint)
+                    }
+                    Slider(value: $vm.baselineStress, in: 1...10, step: 1).tint(Theme.accentMint)
+                    HStack {
+                        Text("Calm").font(.caption2).foregroundStyle(Theme.textSecondary)
+                        Spacer()
+                        Text("Very Stressed").font(.caption2).foregroundStyle(Theme.textSecondary)
+                    }
+                }
+            }
+        }
+    }
+
+    private func sectionLabel(_ text: String, icon: String) -> some View {
+        Label(text, systemImage: icon)
+            .font(.system(size: 13, weight: .semibold))
+            .foregroundStyle(Theme.accentMint)
     }
 }

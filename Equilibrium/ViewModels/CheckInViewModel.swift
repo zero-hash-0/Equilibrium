@@ -1,48 +1,47 @@
 import SwiftUI
 import SwiftData
 
+@MainActor
 @Observable
 final class CheckInViewModel {
-    // Step state
-    var currentStep: Int = 1
+    var step: Int = 1
     let totalSteps = 4
 
-    // Step 1
+    // Step values
     var stressLevel: Double = 5
-
-    // Step 2
     var spendingUrge: SpendingUrge = .none
     var note: String = ""
-
-    // Step 3
-    var sleepQualityEnabled = false
+    var sleepEnabled: Bool = false
     var sleepQuality: Double = 3
+    var goalToday: GoalToday = .save
 
-    // Step 4
-    var goalToday: DailyGoal = .save
+    var canGoBack: Bool { step > 1 }
+    var isLastStep: Bool { step == totalSteps }
+    var progress: Double { Double(step) / Double(totalSteps) }
 
-    // Result
-    var savedCheckIn: CheckIn? = nil
+    func nextStep() { if step < totalSteps { step += 1 } }
+    func prevStep() { if step > 1 { step -= 1 } }
 
-    var progress: Double { Double(currentStep) / Double(totalSteps) }
-
-    func nextStep() {
-        if currentStep < totalSteps { currentStep += 1 }
-    }
-    func previousStep() {
-        if currentStep > 1 { currentStep -= 1 }
-    }
-
-    func submit(context: ModelContext) {
-        let checkIn = CheckIn(
-            stressLevel:   Int(stressLevel),
-            spendingUrge:  spendingUrge,
-            sleepQuality:  sleepQualityEnabled ? Int(sleepQuality) : nil,
-            goalToday:     goalToday,
-            note:          note.isEmpty ? nil : note
+    func submit(modelContext: ModelContext) -> CheckIn {
+        let score = WellnessScore.compute(
+            stressLevel: Int(stressLevel),
+            spendingUrge: spendingUrge,
+            sleepQuality: sleepEnabled ? Int(sleepQuality) : nil
         )
-        context.insert(checkIn)
-        try? context.save()
-        savedCheckIn = checkIn
+        let checkIn = CheckIn(
+            stressLevel: Int(stressLevel),
+            spendingUrge: spendingUrge,
+            sleepQuality: sleepEnabled ? Int(sleepQuality) : nil,
+            goalToday: goalToday,
+            note: note.trimmingCharacters(in: .whitespacesAndNewlines).nilIfEmpty,
+            wellnessScore: score
+        )
+        modelContext.insert(checkIn)
+        try? modelContext.save()
+        return checkIn
     }
+}
+
+private extension String {
+    var nilIfEmpty: String? { isEmpty ? nil : self }
 }

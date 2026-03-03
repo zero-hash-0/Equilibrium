@@ -3,17 +3,17 @@ import SwiftData
 
 @Model
 final class AIInsight {
-    var id: UUID
-    var checkInId: UUID
+    @Attribute(.unique) var id: UUID
     var insightText: String
     var actionText: String
     var ifThenText: String
     var rawResponse: String
     var createdAt: Date
 
-    init(checkInId: UUID, insightText: String, actionText: String, ifThenText: String, rawResponse: String) {
+    @Relationship var checkIn: CheckIn?
+
+    init(insightText: String, actionText: String, ifThenText: String, rawResponse: String) {
         self.id          = UUID()
-        self.checkInId   = checkInId
         self.insightText = insightText
         self.actionText  = actionText
         self.ifThenText  = ifThenText
@@ -22,10 +22,8 @@ final class AIInsight {
     }
 }
 
-// DTO returned from AIService before persisting
-struct AIInsightDTO {
+struct AIInsightDTO: Decodable, Sendable {
     let insight: String
     let action: String
-    let ifThen: String
-    let raw: String
+    let if_then: String
 }

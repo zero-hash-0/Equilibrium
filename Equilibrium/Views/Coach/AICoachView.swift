@@ -2,180 +2,134 @@ import SwiftUI
 import SwiftData
 
 struct AICoachView: View {
-    @Environment(\.modelContext) private var context
+    @Environment(\.modelContext) private var modelContext
     let checkIn: CheckIn
     let profile: UserProfile
     let onDone: () -> Void
 
-    @State private var vm = CoachViewModel()
+    @State private var vm = AICoachViewModel()
 
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [Color.eqGraphite, Color.eqSlate],
-                startPoint: .top, endPoint: .bottom
-            ).ignoresSafeArea()
-
+            Theme.background.ignoresSafeArea()
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
+                VStack(spacing: Theme.lg) {
                     headerSection
-                    checkInSummaryCard
+                    summaryCard
                     insightSection
-                    Spacer(minLength: 20)
-                    actionButtons
+                    actionSection
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 24)
+                .padding(.horizontal, Theme.lg)
+                .padding(.top, Theme.md)
                 .padding(.bottom, 48)
             }
         }
         .navigationBarHidden(true)
         .task {
-            await vm.loadInsight(checkIn: checkIn, profile: profile, context: context)
+            await vm.loadOrGenerate(modelContext: modelContext, profile: profile, checkIn: checkIn)
         }
     }
-
-    // MARK: - Subviews
 
     private var headerSection: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: Theme.xs) {
             Image(systemName: "sparkles")
-                .font(.system(size: 36))
-                .foregroundStyle(Color.eqMint)
+                .font(.system(size: Theme.iconLG))
+                .foregroundStyle(Theme.accentMint)
             Text("Your AI Coach")
                 .font(.system(size: 26, weight: .bold, design: .rounded))
-                .foregroundStyle(.white)
+                .foregroundStyle(Theme.textPrimary)
             Text("Based on today's check-in")
                 .font(.subheadline)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Theme.textSecondary)
         }
+        .padding(.top, Theme.md)
     }
 
-    private var checkInSummaryCard: some View {
-        GlassCard {
-            VStack(alignment: .leading, spacing: 10) {
-                Label("Today's Check-In", systemImage: "calendar")
-                    .font(.caption).fontWeight(.semibold).foregroundStyle(Color.eqMint)
-                Divider().background(.secondary.opacity(0.3))
+    private var summaryCard: some View {
+        TitledCard(title: "Today's Check-In", icon: "calendar") {
+            VStack(spacing: Theme.xs) {
                 summaryRow("Stress", value: "\(checkIn.stressLevel) / 10")
-                summaryRow("Spending urge", value: checkIn.spendingUrge)
-                if let sleep = checkIn.sleepQuality {
-                    summaryRow("Sleep quality", value: "\(sleep) / 5")
-                }
-                summaryRow("Goal today", value: checkIn.goalToday)
-                if let note = checkIn.note, !note.isEmpty {
-                    summaryRow("Note", value: note)
-                }
+                summaryRow("Spending urge", value: checkIn.spendingUrgeRaw)
+                if let sleep = checkIn.sleepQuality { summaryRow("Sleep", value: "\(sleep) / 5") }
+                summaryRow("Goal today", value: checkIn.goalTodayRaw)
+                if let note = checkIn.note, !note.isEmpty { summaryRow("Note", value: note) }
             }
         }
     }
 
     private func summaryRow(_ label: String, value: String) -> some View {
         HStack {
-            Text(label).font(.subheadline).foregroundStyle(.secondary)
+            Text(label).font(.subheadline).foregroundStyle(Theme.textSecondary)
             Spacer()
-            Text(value).font(.subheadline).fontWeight(.medium).foregroundStyle(.white)
+            Text(value).font(.subheadline).fontWeight(.medium).foregroundStyle(Theme.textPrimary)
         }
     }
 
     @ViewBuilder
     private var insightSection: some View {
         switch vm.state {
+        case .idle:
+            EmptyView()
         case .loading:
-            GlassCard {
-                VStack(spacing: 14) {
-                    ProgressView()
-                        .progressViewStyle(.circular)
-                        .tint(Color.eqMint)
-                        .scaleEffect(1.2)
+            LiquidGlassCard {
+                VStack(spacing: Theme.md) {
+                    ProgressView().progressViewStyle(.circular).tint(Theme.accentMint).scaleEffect(1.2)
                     Text("Generating your insight…")
-                        .font(.subheadline).foregroundStyle(.secondary)
+                        .font(.subheadline).foregroundStyle(Theme.textSecondary)
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 24)
+                .frame(maxWidth: .infinity).padding(.vertical, Theme.xl)
             }
-
         case .success(let insight):
-            VStack(spacing: 16) {
-                insightBlock(
-                    icon: "lightbulb.fill",
-                    title: "Insight",
-                    text: insight.insightText,
-                    accent: Color.eqMint
-                )
-                insightBlock(
-                    icon: "arrow.right.circle.fill",
-                    title: "One Small Action",
-                    text: "• \(insight.actionText)",
-                    accent: .cyan
-                )
-                insightBlock(
-                    icon: "arrow.triangle.branch",
-                    title: "If-Then Plan",
-                    text: insight.ifThenText,
-                    accent: .purple.opacity(0.8)
-                )
+            VStack(spacing: Theme.md) {
+                insightBlock(icon: "lightbulb.fill", title: "Insight",
+                             text: insight.insightText, accent: Theme.accentMint)
+                insightBlock(icon: "arrow.right.circle.fill", title: "One Small Action",
+                             text: "• \(insight.actionText)", accent: Theme.accentCyan)
+                insightBlock(icon: "arrow.triangle.branch", title: "If-Then Plan",
+                             text: insight.ifThenText, accent: .purple.opacity(0.85))
             }
-
         case .error(let msg):
-            GlassCard {
-                VStack(spacing: 12) {
+            LiquidGlassCard {
+                VStack(spacing: Theme.md) {
                     Image(systemName: "exclamationmark.triangle.fill")
-                        .font(.system(size: 28))
-                        .foregroundStyle(.orange)
-                    Text(msg)
-                        .font(.subheadline).foregroundStyle(.secondary)
+                        .font(.system(size: 32)).foregroundStyle(.orange)
+                    Text(msg).font(.subheadline).foregroundStyle(Theme.textSecondary)
                         .multilineTextAlignment(.center)
                     Button("Retry") {
-                        Task { await vm.loadInsight(checkIn: checkIn, profile: profile, context: context) }
+                        Task { await vm.loadOrGenerate(modelContext: modelContext, profile: profile, checkIn: checkIn) }
                     }
-                    .foregroundStyle(Color.eqMint)
-                    .fontWeight(.semibold)
+                    .foregroundStyle(Theme.accentMint).fontWeight(.semibold)
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity).padding(.vertical, Theme.md)
             }
         }
     }
 
     private func insightBlock(icon: String, title: String, text: String, accent: Color) -> some View {
-        GlassCard {
-            VStack(alignment: .leading, spacing: 10) {
-                Label(title, systemImage: icon)
-                    .font(.caption).fontWeight(.semibold).foregroundStyle(accent)
-                Text(text)
-                    .font(.body)
-                    .foregroundStyle(.white)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
+        TitledCard(title: title, icon: icon, accent: accent) {
+            Text(text)
+                .font(.body).foregroundStyle(Theme.textPrimary)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 
-    private var actionButtons: some View {
-        VStack(spacing: 12) {
+    private var actionSection: some View {
+        VStack(spacing: Theme.sm) {
             if case .success = vm.state {
-                Button {
-                    Task { await vm.regenerate(checkIn: checkIn, profile: profile, context: context) }
-                } label: {
-                    HStack(spacing: 8) {
-                        if vm.isRegenerating {
-                            ProgressView().progressViewStyle(.circular).tint(Color.eqMint).scaleEffect(0.8)
-                        } else {
-                            Image(systemName: "arrow.clockwise")
-                        }
-                        Text("Regenerate (3 max/day)")
-                    }
-                    .font(.system(size: 15, weight: .medium))
-                    .foregroundStyle(Color.eqMint)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 48)
-                    .background(Color.eqMint.opacity(0.1))
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                let remaining = vm.remainingRegenerations
+                SecondaryButton(
+                    title: remaining > 0
+                        ? "Regenerate (\(remaining) left today)"
+                        : "Limit Reached (3/day)",
+                    icon: "arrow.clockwise",
+                    destructive: false
+                ) {
+                    Task { await vm.regenerate(modelContext: modelContext, profile: profile, checkIn: checkIn) }
                 }
-                .disabled(vm.isRegenerating)
+                .disabled(!vm.canRegenerate)
+                .opacity(vm.canRegenerate ? 1 : 0.5)
             }
-
-            PrimaryButton(title: "Back to Home") { onDone() }
+            PrimaryButton(title: "Back to Home", action: onDone)
         }
     }
 }
