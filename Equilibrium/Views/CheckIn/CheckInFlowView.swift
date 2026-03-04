@@ -67,6 +67,9 @@ struct CheckInFlowView: View {
         case 2: Step2UrgeView(vm: vm)
         case 3: Step3SleepView(vm: vm)
         case 4: Step4GoalView(vm: vm) {
+            vm.nextStep()
+        }
+        case 5: Step5MoneyTriggersView(vm: vm) {
             let ci = vm.submit(modelContext: modelContext)
             savedCheckIn = ci
             navigateToCoach = true

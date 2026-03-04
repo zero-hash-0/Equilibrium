@@ -81,11 +81,11 @@ struct AICoachView: View {
             }
         case .success(let insight):
             VStack(spacing: Theme.md) {
-                insightBlock(icon: "lightbulb.fill", title: "Insight",
+                insightBlock(emoji: "💡", title: "Insight",
                              text: insight.insightText, accent: Theme.accentMint)
-                insightBlock(icon: "arrow.right.circle.fill", title: "One Small Action",
+                insightBlock(emoji: "⚡", title: "One Small Action",
                              text: "• \(insight.actionText)", accent: Theme.accentCyan)
-                insightBlock(icon: "arrow.triangle.branch", title: "If-Then Plan",
+                insightBlock(emoji: "🧠", title: "If-Then Plan",
                              text: insight.ifThenText, accent: .purple.opacity(0.85))
             }
         case .error(let msg):
@@ -105,8 +105,8 @@ struct AICoachView: View {
         }
     }
 
-    private func insightBlock(icon: String, title: String, text: String, accent: Color) -> some View {
-        TitledCard(title: title, icon: icon, accent: accent) {
+    private func insightBlock(emoji: String, title: String, text: String, accent: Color) -> some View {
+        TitledCard(title: "\(emoji) \(title)", icon: "", accent: accent) {
             Text(text)
                 .font(.body).foregroundStyle(Theme.textPrimary)
                 .fixedSize(horizontal: false, vertical: true)

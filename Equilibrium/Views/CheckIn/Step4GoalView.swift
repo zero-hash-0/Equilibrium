@@ -21,7 +21,7 @@ struct Step4GoalView: View {
                 }
                 .padding(.top, Theme.sm)
             }
-            PrimaryButton(title: "Submit & Get Insights", action: onSubmit)
+            PrimaryButton(title: "Next — Money Triggers →", action: onSubmit)
                 .padding(.horizontal, Theme.lg)
                 .padding(.bottom, Theme.xxl)
         }

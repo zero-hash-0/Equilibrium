@@ -14,21 +14,27 @@ final class CheckIn {
     var wellnessScore: Int
     var createdAt: Date
 
+    // Money Triggers (optional — collected in Step 5)
+    var moneyTriggerRaw: String?      // ImpulseTrigger.rawValue
+    var moneyEmotionRaw: String?      // MoneyEmotion.rawValue
+    var spendingCategoryRaw: String?  // SpendingCategory.rawValue
+    var triggerTimeRaw: String?       // TriggerTime.rawValue
+
     @Relationship(deleteRule: .cascade, inverse: \AIInsight.checkIn)
     var insight: AIInsight?
 
     init(stressLevel: Int, spendingUrge: SpendingUrge, sleepQuality: Int?,
          goalToday: GoalToday, note: String?, wellnessScore: Int) {
-        self.id             = UUID()
-        self.date           = Date()
-        self.dayKey         = DateHelpers.todayKey()
-        self.stressLevel    = stressLevel
+        self.id              = UUID()
+        self.date            = Date()
+        self.dayKey          = DateHelpers.todayKey()
+        self.stressLevel     = stressLevel
         self.spendingUrgeRaw = spendingUrge.rawValue
-        self.sleepQuality   = sleepQuality
-        self.goalTodayRaw   = goalToday.rawValue
-        self.note           = note
-        self.wellnessScore  = wellnessScore
-        self.createdAt      = Date()
+        self.sleepQuality    = sleepQuality
+        self.goalTodayRaw    = goalToday.rawValue
+        self.note            = note
+        self.wellnessScore   = wellnessScore
+        self.createdAt       = Date()
     }
 
     var spendingUrge: SpendingUrge {
@@ -39,5 +45,20 @@ final class CheckIn {
     var goalToday: GoalToday {
         get { GoalToday(rawValue: goalTodayRaw) ?? .other }
         set { goalTodayRaw = newValue.rawValue }
+    }
+
+    var moneyEmotion: MoneyEmotion? {
+        get { moneyEmotionRaw.flatMap { MoneyEmotion(rawValue: $0) } }
+        set { moneyEmotionRaw = newValue?.rawValue }
+    }
+
+    var spendingCategory: SpendingCategory? {
+        get { spendingCategoryRaw.flatMap { SpendingCategory(rawValue: $0) } }
+        set { spendingCategoryRaw = newValue?.rawValue }
+    }
+
+    var triggerTime: TriggerTime? {
+        get { triggerTimeRaw.flatMap { TriggerTime(rawValue: $0) } }
+        set { triggerTimeRaw = newValue?.rawValue }
     }
 }

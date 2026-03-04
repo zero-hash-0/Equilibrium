@@ -36,9 +36,15 @@ struct TitledCard<Accessory: View, Content: View>: View {
         LiquidGlassCard {
             VStack(alignment: .leading, spacing: Theme.sm) {
                 HStack {
-                    Label(title, systemImage: icon)
-                        .font(.system(size: 13, weight: .semibold))
-                        .foregroundStyle(accent)
+                    if icon.isEmpty {
+                        Text(title)
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(accent)
+                    } else {
+                        Label(title, systemImage: icon)
+                            .font(.system(size: 13, weight: .semibold))
+                            .foregroundStyle(accent)
+                    }
                     Spacer()
                     accessory()
                 }

@@ -47,6 +47,9 @@
 		AA0000000000000000000026 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000026 /* SettingsView.swift */; };
 		AA0000000000000000000027 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000027 /* TrendsView.swift */; };
 		AA0000000000000000000028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000028 /* Assets.xcassets */; };
+		AA0000000000000000000029 /* ImpulseWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002D /* ImpulseWin.swift */; };
+		AA000000000000000000002A /* ImpulseModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002E /* ImpulseModeView.swift */; };
+		AA000000000000000000002B /* Step5MoneyTriggersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000000000000000000002F /* Step5MoneyTriggersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +97,9 @@
 		BB000000000000000000002A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = ../Config/Debug.xcconfig; sourceTree = "<group>"; };
 		BB000000000000000000002B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = ../Config/Release.xcconfig; sourceTree = "<group>"; };
 		BB000000000000000000002C /* Equilibrium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equilibrium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB000000000000000000002D /* ImpulseWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpulseWin.swift; sourceTree = "<group>"; };
+		BB000000000000000000002E /* ImpulseModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpulseModeView.swift; sourceTree = "<group>"; };
+		BB000000000000000000002F /* Step5MoneyTriggersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step5MoneyTriggersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 				BB0000000000000000000006 /* CheckIn.swift */,
 				BB0000000000000000000007 /* Enums.swift */,
 				BB0000000000000000000008 /* UserProfile.swift */,
+				BB000000000000000000002D /* ImpulseWin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +216,7 @@
 				BB0000000000000000000018 /* Step2UrgeView.swift */,
 				BB0000000000000000000019 /* Step3SleepView.swift */,
 				BB000000000000000000001A /* Step4GoalView.swift */,
+				BB000000000000000000002F /* Step5MoneyTriggersView.swift */,
 			);
 			path = CheckIn;
 			sourceTree = "<group>";
@@ -237,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0000000000000000000021 /* HomeView.swift */,
+				BB000000000000000000002E /* ImpulseModeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -401,6 +410,9 @@
 				AA0000000000000000000025 /* EditProfileView.swift in Sources */,
 				AA0000000000000000000026 /* SettingsView.swift in Sources */,
 				AA0000000000000000000027 /* TrendsView.swift in Sources */,
+				AA0000000000000000000029 /* ImpulseWin.swift in Sources */,
+				AA000000000000000000002A /* ImpulseModeView.swift in Sources */,
+				AA000000000000000000002B /* Step5MoneyTriggersView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

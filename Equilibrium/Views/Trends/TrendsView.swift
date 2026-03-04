@@ -4,6 +4,7 @@ import Charts
 
 struct TrendsView: View {
     @Query(sort: \CheckIn.date, order: .forward) private var checkIns: [CheckIn]
+    @Query(sort: \ImpulseWin.createdAt, order: .forward) private var impulseWins: [ImpulseWin]
     @State private var vm = TrendsViewModel()
 
     var body: some View {
@@ -13,7 +14,7 @@ struct TrendsView: View {
                 VStack(spacing: Theme.lg) {
                     header
                     rangePicker
-                    if vm.stressSeries(from: checkIns).isEmpty {
+                    if vm.stressSeries(from: checkIns).isEmpty && vm.impulseWinSeries(from: impulseWins).isEmpty {
                         EmptyStateView(
                             icon: "chart.xyaxis.line",
                             title: "No Data Yet",
@@ -21,9 +22,13 @@ struct TrendsView: View {
                         )
                         .padding(.top, 60)
                     } else {
-                        stressChart
-                        wellnessChart
-                        urgeChart
+                        if !vm.stressSeries(from: checkIns).isEmpty {
+                            stressChart
+                            wellnessChart
+                            urgeChart
+                        }
+                        impulseWinsChart
+                        urgeFrequencyChart
                     }
                 }
                 .padding(.horizontal, Theme.lg)
@@ -116,6 +121,73 @@ struct TrendsView: View {
                     .foregroundStyle(Theme.textSecondary)
             }}
             .frame(height: 140)
+        }
+    }
+
+    private var impulseWinsChart: some View {
+        chartCard(title: "Impulse Wins", icon: "trophy.fill", accent: .orange) {
+            let series = vm.impulseWinSeries(from: impulseWins)
+            if series.isEmpty {
+                Text("No impulse wins recorded yet.\nUse Impulse Mode to start tracking.")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.textSecondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, Theme.lg)
+            } else {
+                Chart(series) { pt in
+                    BarMark(x: .value("Date", pt.date), y: .value("Wins", pt.value))
+                        .foregroundStyle(Color.orange.opacity(0.8).gradient)
+                        .cornerRadius(4)
+                }
+                .chartYAxis {
+                    AxisMarks(values: .automatic(desiredCount: 4)) { val in
+                        AxisGridLine()
+                        AxisValueLabel().foregroundStyle(Theme.textSecondary)
+                    }
+                }
+                .chartXAxis { AxisMarks(values: .automatic(desiredCount: 4)) {
+                    AxisValueLabel(format: .dateTime.month(.abbreviated).day())
+                        .foregroundStyle(Theme.textSecondary)
+                }}
+                .frame(height: 140)
+            }
+        }
+    }
+
+    private var urgeFrequencyChart: some View {
+        chartCard(title: "Urge Frequency", icon: "chart.bar.fill", accent: Theme.accentCyan) {
+            let freq = vm.urgeFrequency(from: checkIns)
+            if freq.allSatisfy({ $0.count == 0 }) {
+                Text("No urge data yet.\nComplete check-ins to see frequency.")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.textSecondary)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, Theme.lg)
+            } else {
+                Chart(freq) { pt in
+                    BarMark(x: .value("Level", pt.label), y: .value("Count", pt.count))
+                        .foregroundStyle(pt.color.gradient)
+                        .cornerRadius(6)
+                    RuleMark(y: .value("Count", pt.count))
+                        .opacity(0)
+                        .annotation(position: .top, alignment: .center) {
+                            if pt.count > 0 {
+                                Text("\(pt.count)")
+                                    .font(.caption2.bold())
+                                    .foregroundStyle(Theme.textSecondary)
+                            }
+                        }
+                }
+                .chartYAxis {
+                    AxisMarks(values: .automatic(desiredCount: 4)) { _ in
+                        AxisGridLine()
+                        AxisValueLabel().foregroundStyle(Theme.textSecondary)
+                    }
+                }
+                .frame(height: 140)
+            }
         }
     }
 
