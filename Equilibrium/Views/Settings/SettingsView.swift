@@ -64,7 +64,7 @@ struct SettingsView: View {
                 settingsRow("Name", value: p.name)
                 settingsRow("Goal", value: p.primaryGoalRaw)
                 settingsRow("Baseline Stress", value: "\(p.baselineStress) / 10")
-                settingsRow("Member Since", value: p.createdAt.formatted(date: .medium, time: .omitted))
+                settingsRow("Member Since", value: p.createdAt.formatted(date: .abbreviated, time: .omitted))
             }
         }
     }

@@ -20,11 +20,13 @@ struct PrimaryButton: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: 54)
-            .background(
-                isDisabled
-                    ? Color(white: 0.3)
-                    : Theme.accentGradient
-            )
+            .background {
+                if isDisabled {
+                    Color(white: 0.3)
+                } else {
+                    Theme.accentGradient
+                }
+            }
             .foregroundStyle(.black)
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         }

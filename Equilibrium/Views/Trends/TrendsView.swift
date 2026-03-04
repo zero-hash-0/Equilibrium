@@ -191,7 +191,7 @@ struct TrendsView: View {
         }
     }
 
-    private func chartCard<C: View>(title: String, icon: String, accent: Color, @ViewBuilder chart: () -> C) -> some View {
-        TitledCard(title: title, icon: icon, accent: accent) { chart() }
+    private func chartCard(title: String, icon: String, accent: Color, @ViewBuilder chart: @escaping () -> some View) -> some View {
+        TitledCard(title: title, icon: icon, accent: accent, content: chart)
     }
 }
